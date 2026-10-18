@@ -4,6 +4,23 @@
 
 Project submitted to Infomatrix, category **Software Development** (Project Contest).
 
+### 🔴 [Try the live app → wasteland-indol.vercel.app](https://wasteland-indol.vercel.app)
+
+### Infomatrix requirements checklist
+
+| Requirement (Infomatrix regulations and Software Development page) | Where it is met |
+|---|---|
+| Entry in English | The site opens in English by default (Romanian and Russian are optional); all documentation is in English |
+| 1–2 students and a supervisor, as distinct roles | [People involved](#2-people-involved) |
+| Description with sketches or images of the idea | [Screenshots](#screenshots) and the [design plan](docs/design/plan.svg) (site map, user flow, pricing curve) |
+| Early-stage plans and designs | [Early-stage plan & design decisions](#3-early-stage-plan-design-decisions--timeline) |
+| Iterations during development | [Development timeline](#development-timeline) and the Git history |
+| Software and hardware specifications | [Specifications](#5-software--hardware-specifications) |
+| Problems faced and how they were solved | [Problems faced](#6-problems-faced--how-they-were-solved) |
+| Open source, original work, no third-party rights infringed | [MIT licence](LICENSE); every third-party resource and its licence is in [Third-party content](#third-party-content--licences) |
+| Cite all prompts, models and AI resources | [Responsible AI](#7-responsible-ai-usage) and the full [AI usage log](docs/AI_USAGE.md) with every prompt, also linked from the site's *About the project* page |
+| A real-world problem, practical and user-friendly | [The problem](#the-problem); the live app works on desktop and phone |
+
 ---
 
 ## 1. Project Description
@@ -88,11 +105,19 @@ The project started from one framing question: *how do you make "food waste", a 
 
 The structure deliberately mirrors the author's earlier project, ClimaWatch: the same pages (Problem, Solution, Live, Compare, Profile), the same serverless backend with a local emulator, the same three languages, and the same habit of testing every piece of logic. The visual design is new: a warm cream, cocoa and champagne-gold palette, Cormorant Garamond headings with a script display face, full-bleed photography and tracked uppercase labels, inspired by luxury-hotel websites.
 
+![Design plan: site map, user flow and last-call pricing curve](docs/design/plan.svg)
+
+*The design plan: the site map (the same five pages as ClimaWatch), one evening's user flow, and the last-call pricing curve.*
+
 ### Development timeline
 
 | Date | What happened |
 |---|---|
-| **18 Oct 2026** | **First complete version.** React + TypeScript frontend and a serverless backend with five endpoints (offers, history, evening, cities, reserve). Deterministic partner catalogue for 28 cities, time-zone-aware dynamic pricing, reservations with pickup codes, profile-based recommendations and alerts, night-side globe, impact lab, city race, hour-by-hour planner, EN/RO/RU translations, and 91 automated tests. |
+| **18 Oct 2026** | **Research and plan.** Studied the structure of ClimaWatch (pages, serverless API, local emulator, translations, tests) and the visual language of a luxury-hotel website (palette, serif and script type, full-bleed photography, split navigation). Chose a simulated partner network, because no public API exposes restaurants' unsold food. Drew the [design plan](docs/design/plan.svg). |
+| **18 Oct 2026** | **Iteration 1: backend.** Seeded catalogue of 28 cities and 8 venues each, per-city time zones and currencies, last-call pricing, reservations, history, evening and globe endpoints. 41 backend tests. |
+| **18 Oct 2026** | **Iteration 2: frontend.** Five pages, hotel-style design system, offer cards, personal pick, reservation dialog, globe with the night side, impact lab, city race, hour-by-hour planner, EN/RO/RU. 91 tests in total. |
+| **18 Oct 2026** | **Iteration 3: review in the browser.** Every page was tested on desktop, at phone width and in Russian, and the problems found were fixed: a dish labelled vegetarian that contains bacon (Quiche Lorraine) was replaced; uneven card heights; a "last call" glow that looked pink; a chart bar invisible on its dark panel; a blurry hero photo; too many city shortcuts under the globe; state updates inside effects flagged by the linter. |
+| **18 Oct 2026** | **Iteration 4: Infomatrix alignment and launch.** Read the regulations and the Software Development rubric; added this checklist, the AI usage log with every prompt, the third-party licence list, the design plan and an *About the project* page; deployed to Vercel. |
 
 ---
 
@@ -180,6 +205,8 @@ vite-plugins/
 AI tools were used during development, in line with the category's rules on citing AI assistance.
 
 - **Tool used:** [Claude Code](https://claude.com/claude-code) (Anthropic), an AI coding assistant, used as a pair-programming tool.
+- **Model:** Claude Opus 5.5 (`claude-opus-5-5`).
+- **Prompts:** every prompt is quoted verbatim, with what it produced and how it was checked, in [docs/AI_USAGE.md](docs/AI_USAGE.md).
 - **How it was used:** scaffolding the project on the structure of the student's earlier project, writing frontend and backend TypeScript, generating the automated tests, translating the interface, and drafting this README, from directions and requirements given by the student.
 - **Human oversight:** generated code is reviewed, run and tested before being kept. Product decisions (the problem, the win-win-win model, the visual direction, what the architecture must protect against) were directed by the student.
 - **What was not AI-generated:** the food-waste statistics and their sources, the Our World in Data chart, the TED talk and the Unsplash photographs are real external sources, credited below.
@@ -207,11 +234,25 @@ npm test
 
 ## Deployment
 
-The `api/*.ts` structure is recognised automatically by [Vercel](https://vercel.com): import the repository and deploy. No environment variables are required. `vercel.json` rewrites every non-API route to `index.html`, so direct links to inner pages work.
+The live app runs on [Vercel](https://vercel.com) at **https://wasteland-indol.vercel.app**. The `api/*.ts` structure is recognised automatically: import the repository (or run `npx vercel --prod`) and deploy. No environment variables are required. `vercel.json` rewrites every non-API route to `index.html`, so direct links to inner pages work.
 
 ## Sources
 
 UNEP Food Waste Index Report 2024 (unep.org); FAO, *Food Wastage Footprint: Impacts on Natural Resources* (2013) and *The State of Food and Agriculture 2019* (fao.org); United Nations Sustainable Development Goals, target 12.3 (sdgs.un.org); Our World in Data (ourworldindata.org); WRAP (wrap.ngo); TED, Tristram Stuart; Unsplash (photography); Natural Earth coastlines (naturalearthdata.com, via the world-atlas package).
+
+## Third-party content & licences
+
+| Content | Licence / terms | How it is used |
+|---|---|---|
+| Photographs from [Unsplash](https://unsplash.com/) | [Unsplash License](https://unsplash.com/license) (free to use, no permission needed) | Loaded from Unsplash's image CDN |
+| Cormorant Garamond, Pinyon Script, Raleway | SIL Open Font License | Loaded from Google Fonts |
+| [Our World in Data](https://ourworldindata.org/grapher/food-waste-per-capita) chart | CC BY 4.0 | Embedded, with credit |
+| TED talk by Tristram Stuart | YouTube embed | Embedded (privacy-enhanced `youtube-nocookie.com`), with credit |
+| Statistics: UNEP, FAO, UN SDGs | Cited facts | Quoted with their source next to each figure |
+| Natural Earth coastlines via [world-atlas](https://github.com/topojson/world-atlas) | Public domain / ISC | Drawn on the globe |
+| React, Vite, Tailwind CSS, React Router, d3-geo, topojson-client | MIT / ISC | Dependencies (see `package.json`) |
+
+The partner venues are fictional: each name is a type of venue ("Boulangerie", "Trattoria", "Café"…) followed by a word picked by the program. They do not refer to real businesses.
 
 ## License
 

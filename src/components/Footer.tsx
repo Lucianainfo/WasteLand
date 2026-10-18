@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { REPO_URL } from '../constants/links'
 import { useLanguage } from '../i18n/LanguageContext'
 import { Emblem } from './Emblem'
 
@@ -7,6 +8,7 @@ const ORG_LINKS = [
   { name: 'FAO', url: 'https://www.fao.org/platform-food-loss-waste/en' },
   { name: 'WRAP', url: 'https://www.wrap.ngo/' },
   { name: 'UN SDG 12.3', url: 'https://sdgs.un.org/goals/goal12' },
+  { name: 'GitHub · source code', url: REPO_URL },
 ]
 
 export function Footer() {
@@ -17,6 +19,7 @@ export function Footer() {
     { to: '/solution', label: t.nav.solution },
     { to: '/compare', label: t.nav.compare },
     { to: '/profile', label: t.nav.profile },
+    { to: '/about', label: t.footer.about },
   ]
 
   return (

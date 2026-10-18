@@ -5,6 +5,7 @@ import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
 import { EveningMoodProvider } from './context/EveningMoodProvider'
 import { LanguageProvider } from './i18n/LanguageContext'
+import { AboutPage } from './pages/AboutPage'
 import { ComparePage } from './pages/ComparePage'
 import { HomePage } from './pages/HomePage'
 import { ProblemPage } from './pages/ProblemPage'
@@ -33,6 +34,7 @@ function AppShell() {
           <Route path="/solution" element={<SolutionPage />} />
           <Route path="/compare" element={<ComparePage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </main>
       <Footer />

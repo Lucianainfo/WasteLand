@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" font-family="Georgia, 'Times New Roman', serif">
+  <title>WasteLand: design plan (site map, user flow, pricing curve)</title>
+  <rect width="1200" height="900" fill="#f8f5f2"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#9e7c4f"/>
+    </marker>
+  </defs>
+
+  <text x="600" y="58" text-anchor="middle" font-size="34" fill="#2a2118">WasteLand: design plan</text>
+  <text x="600" y="86" text-anchor="middle" font-size="15" font-style="italic" fill="#5b4f43">Site map · user flow · last-call pricing</text>
+
+  <!-- 1. Site map -->
+  <text x="60" y="140" font-size="13" letter-spacing="3" fill="#9e7c4f" font-family="Arial, sans-serif">1 · SITE MAP (same five pages as ClimaWatch)</text>
+  <g font-size="16" fill="#2a2118" text-anchor="middle">
+    <rect x="490" y="160" width="220" height="56" fill="#3f281c"/>
+    <text x="600" y="185" fill="#e8d9b8">Tonight (home)</text>
+    <text x="600" y="204" fill="#e8d9b8" font-size="12" font-style="italic">globe · search · pick · offers</text>
+
+    <g fill="#fbfaf8" stroke="#b8a58a">
+      <rect x="60" y="270" width="200" height="56"/>
+      <rect x="290" y="270" width="200" height="56"/>
+      <rect x="710" y="270" width="200" height="56"/>
+      <rect x="940" y="270" width="200" height="56"/>
+    </g>
+    <text x="160" y="295">The problem</text>
+    <text x="160" y="314" font-size="12" font-style="italic" fill="#5b4f43">stats · chart · video</text>
+    <text x="390" y="295">The solution</text>
+    <text x="390" y="314" font-size="12" font-style="italic" fill="#5b4f43">win ×3 · impact lab</text>
+    <text x="810" y="295">City race</text>
+    <text x="810" y="314" font-size="12" font-style="italic" fill="#5b4f43">two cities compared</text>
+    <text x="1040" y="295">My profile</text>
+    <text x="1040" y="314" font-size="12" font-style="italic" fill="#5b4f43">diet · budget · planner</text>
+    <g stroke="#9e7c4f" fill="none">
+      <path d="M600 216 V 243 H 160 V 270"/>
+      <path d="M390 243 V 270"/>
+      <path d="M600 243 H 1040 V 270"/>
+      <path d="M810 243 V 270"/>
+    </g>
+    <text x="600" y="356" font-size="12" font-style="italic" fill="#8a7a66">+ "About the project" (team, AI disclosure, sources), linked from the footer</text>
+  </g>
+
+  <!-- 2. User flow -->
+  <text x="60" y="420" font-size="13" letter-spacing="3" fill="#9e7c4f" font-family="Arial, sans-serif">2 · USER FLOW: ONE EVENING</text>
+  <g font-size="16" fill="#2a2118" text-anchor="middle">
+    <g fill="#fbfaf8" stroke="#b8a58a">
+      <rect x="60" y="440" width="180" height="70"/>
+      <rect x="290" y="440" width="180" height="70"/>
+      <rect x="520" y="440" width="180" height="70"/>
+      <rect x="750" y="440" width="180" height="70"/>
+      <rect x="980" y="440" width="160" height="70"/>
+    </g>
+    <text x="150" y="470">Choose a city</text>
+    <text x="150" y="491" font-size="12" font-style="italic" fill="#5b4f43">search or click the globe</text>
+    <text x="380" y="470">Personal pick</text>
+    <text x="380" y="491" font-size="12" font-style="italic" fill="#5b4f43">diet + budget → 1 offer</text>
+    <text x="610" y="470">Reserve</text>
+    <text x="610" y="491" font-size="12" font-style="italic" fill="#5b4f43">server locks the price</text>
+    <text x="840" y="470">Pickup code</text>
+    <text x="840" y="491" font-size="12" font-style="italic" fill="#5b4f43">WL-XXXXX, saved on device</text>
+    <text x="1060" y="470">Collect &amp; pay</text>
+    <text x="1060" y="491" font-size="12" font-style="italic" fill="#5b4f43">before closing</text>
+    <g stroke="#9e7c4f" marker-end="url(#arrow)">
+      <path d="M240 475 H 286"/>
+      <path d="M470 475 H 516"/>
+      <path d="M700 475 H 746"/>
+      <path d="M930 475 H 976"/>
+    </g>
+    <text x="600" y="545" font-size="13" font-style="italic" fill="#8a7a66">Win ×3: the customer pays less · the venue recovers costs · ≈2.5 kg CO2e avoided per kg rescued</text>
+  </g>
+
+  <!-- 3. Pricing curve -->
+  <text x="60" y="610" font-size="13" letter-spacing="3" fill="#9e7c4f" font-family="Arial, sans-serif">3 · LAST-CALL PRICING (computed on the server)</text>
+  <g transform="translate(120 630)">
+    <line x1="0" y1="220" x2="620" y2="220" stroke="#2a2118"/>
+    <line x1="0" y1="0" x2="0" y2="220" stroke="#2a2118"/>
+    <g font-size="12" fill="#5b4f43" font-family="Arial, sans-serif">
+      <text x="-10" y="224" text-anchor="end">0%</text>
+      <text x="-10" y="158" text-anchor="end">30%</text>
+      <text x="-10" y="70" text-anchor="end">70%</text>
+      <text x="-10" y="15" text-anchor="end">discount</text>
+      <text x="0" y="242" text-anchor="middle">window opens</text>
+      <text x="300" y="242" text-anchor="middle">−90 min</text>
+      <text x="600" y="242" text-anchor="middle">closing time</text>
+    </g>
+    <line x1="0" y1="154" x2="600" y2="154" stroke="#b8a58a" stroke-dasharray="4 5"/>
+    <line x1="0" y1="66" x2="600" y2="66" stroke="#b8a58a" stroke-dasharray="4 5"/>
+    <path d="M0 154 C 160 150, 330 128, 460 100 S 570 72, 600 66" fill="none" stroke="#5a3a28" stroke-width="3"/>
+    <path d="M300 128 C 430 105, 540 70, 600 55" fill="none" stroke="#c08a3e" stroke-width="2" stroke-dasharray="6 5"/>
+    <text x="596" y="40" text-anchor="end" font-size="12" fill="#c08a3e" font-family="Arial, sans-serif">+ up to 5 pts if much is unsold</text>
+  </g>
+  <g font-size="14" fill="#5b4f43">
+    <text x="800" y="680">discount = 30 + 40 · p^1.3</text>
+    <text x="800" y="704">p = time elapsed in the 3-hour window</text>
+    <text x="800" y="740">Urgency badges:</text>
+    <circle cx="806" cy="762" r="5" fill="#5f7a4f"/><text x="818" y="767">open</text>
+    <circle cx="806" cy="786" r="5" fill="#c08a3e"/><text x="818" y="791">closing soon (≤ 90 min)</text>
+    <circle cx="806" cy="810" r="5" fill="#a4452c"/><text x="818" y="815">last call (≤ 45 min) → alert</text>
+  </g>
+</svg>
