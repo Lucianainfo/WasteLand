@@ -1,4 +1,4 @@
-import type { CityInfo, CityOffers, EveningHour, GlobeCity, HistoryDay, Reservation } from '../types/food'
+import type { Category, CityInfo, CityOffers, CreatedListing, EveningHour, GlobeCity, HistoryDay, ItemKey, Reservation } from '../types/food'
 
 export type FetchFailure = { ok: false; reason: 'notFound' | 'generic'; available?: string[] }
 export type FetchResult<T> = { ok: true; data: T } | FetchFailure
@@ -58,5 +58,44 @@ export async function reserve(offerId: string, quantity: number): Promise<Reserv
     return { ok: false, reason: 'generic' }
   } catch {
     return { ok: false, reason: 'generic' }
+  }
+}
+
+export interface NewListing {
+  city: string
+  venueName: string
+  category: Category
+  item: ItemKey
+  portions: number
+  originalPrice: number
+  closeTime: string
+}
+
+export type CreateListingResult =
+  | { ok: true; data: CreatedListing }
+  | { ok: false; reason: 'invalid' | 'rate' | 'full' | 'generic'; message?: string }
+
+/** Publishes a venue's surplus. The server validates everything and decides the price. */
+export async function createListing(listing: NewListing): Promise<CreateListingResult> {
+  try {
+    const res = await fetch('/api/partner', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(listing) })
+    if (res.ok) return { ok: true, data: (await res.json()) as CreatedListing }
+    const body = (await res.json().catch(() => ({}))) as { error?: string }
+    if (res.status === 400) return { ok: false, reason: 'invalid', message: body.error }
+    if (res.status === 429) return { ok: false, reason: 'rate' }
+    if (res.status === 409) return { ok: false, reason: 'full' }
+    return { ok: false, reason: 'generic' }
+  } catch {
+    return { ok: false, reason: 'generic' }
+  }
+}
+
+/** Removes a listing with the secret token received when it was created. */
+export async function deleteListing(id: string, token: string): Promise<boolean> {
+  try {
+    const res = await fetch('/api/partner', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, token }) })
+    return res.ok || res.status === 404
+  } catch {
+    return false
   }
 }

@@ -51,10 +51,26 @@ WasteLand connects the last hours of a kitchen's day with people nearby:
 12. **Your evening, hour by hour.** Enter a home city (remembered on the device) and the rest of today is drawn as hourly tiles, coloured for your diet and budget, with the best hour to go.
 13. **Live global context.** A counter of the tonnes of food wasted worldwide since you opened the page (at the 2022 rate of about 33 t/s) and the years left to the UN goal of halving food waste by 2030.
 14. **Links to real organisations.** UNEP Food Waste Index, FAO, WRAP.
+15. **A page for restaurants.** A café or bakery lists tonight's surplus in a minute: city, venue name, item, portions, full price and closing time. The listing appears on the live site at once, priced by the same last-call curve, marked "Listed by the venue", and can be removed only from the device that created it.
+16. **A real database.** Reservations and restaurant listings are stored in an Upstash Redis database connected through Vercel, so they survive restarts, and the last portion can never be sold twice.
 
 Available in **English, Romanian and Russian**.
 
-> **Honesty note.** WasteLand is a student project. The partner venues and their offers are a **simulated demo network**: a deterministic catalogue generated on the server. Prices, timings, time zones and currencies all behave as they would for real venues, and reservations are real requests to our server, but no real restaurant is involved and no payment is taken. The site says this on the home page.
+> **Honesty note.** WasteLand is a student project. So that every city has something to explore, most offers come from a **simulated demo network**: a deterministic catalogue generated on the server, whose prices, timings, time zones and currencies behave as real venues would. Listings made on the restaurant page are real and appear next to them, marked "Listed by the venue". Reservations are real requests to our server; no payment is taken. The site says this on the home page and on *About the project*.
+
+### How WasteLand is different
+
+Apps such as **Too Good To Go** already rescue a lot of food, mostly as "surprise bags": a fixed price, with contents decided by the shop. WasteLand tries a different model, shown on the site's Solution page:
+
+| | WasteLand | Surprise-bag apps |
+|---|---|---|
+| What you reserve | The exact dish, named, with its diet and gluten labels | A bag whose contents you see at pickup |
+| Price | Falls automatically toward closing time, from 30% to 70% off | A fixed price set in advance by the shop |
+| Choosing | One personal pick for your diet and budget | You browse a list of shops |
+| When to go | An hour-by-hour plan of the best time in your city, and a globe of where last call is happening | The pickup window of each shop |
+| For the venue | List a dish in a minute; no pricing decisions to make | Set a bag value and a price |
+
+*Based on Too Good To Go's public description of its Surprise Bags (toogoodtogo.com). Both models fight the same problem, and both are needed.*
 
 ### Screenshots
 
@@ -118,26 +134,30 @@ The structure deliberately mirrors the author's earlier project, ClimaWatch: the
 | **18 Oct 2026** | **Iteration 2: frontend.** Five pages, hotel-style design system, offer cards, personal pick, reservation dialog, globe with the night side, impact lab, city race, hour-by-hour planner, EN/RO/RU. 91 tests in total. |
 | **18 Oct 2026** | **Iteration 3: review in the browser.** Every page was tested on desktop, at phone width and in Russian, and the problems found were fixed: a dish labelled vegetarian that contains bacon (Quiche Lorraine) was replaced; uneven card heights; a "last call" glow that looked pink; a chart bar invisible on its dark panel; a blurry hero photo; too many city shortcuts under the globe; state updates inside effects flagged by the linter. |
 | **18 Oct 2026** | **Iteration 4: Infomatrix alignment and launch.** Read the regulations and the Software Development rubric; added this checklist, the AI usage log with every prompt, the third-party licence list, the design plan and an *About the project* page; deployed to Vercel. |
+| **20 Oct 2026** | **Iteration 5: from demo to marketplace.** After an honest review of the first version against the rubric, three weaknesses were fixed: a restaurant page where venues publish their own surplus (validated on the server, limited against spam, removable only with a secret token); an Upstash Redis database so reservations and listings persist and the last portion can't be sold twice (atomic `INCRBY`); and a comparison with surprise-bag apps, for originality. 112 tests. |
 
 ---
 
 ## 4. Architecture
 
 ```
-Browser (React)                    Server (serverless functions)
-┌──────────────────────┐           ┌──────────────────────────────────┐
-│  utils/foodApi.ts     │  fetch    │  api/offers.ts         (a city)  │
-│  GET  /api/offers     │ ────────▶ │  api/offer-history.ts  (7 days)  │
-│  GET  /api/offer-…    │           │  api/evening.ts        (by hour) │
-│  GET  /api/evening    │           │  api/cities.ts         (globe)   │
-│  GET  /api/cities     │           │  api/reserve.ts        (POST)    │
-│  POST /api/reserve    │           │              │                   │
-└──────────────────────┘           │              ▼                   │
-                                    │  api/_lib/  catalog (28 cities,  │
-                                    │  8 venues each), clock (time     │
-                                    │  zones), pricing, offers,        │
-                                    │  reservations                    │
-                                    └──────────────────────────────────┘
+Browser (React)                     Server (serverless functions on Vercel)
+┌──────────────────────┐            ┌───────────────────────────────────┐
+│  utils/foodApi.ts     │   fetch    │  api/offers.ts          a city    │
+│  GET  /api/offers     │ ─────────▶ │  api/offer-history.ts   7 days    │
+│  GET  /api/offer-…    │            │  api/evening.ts         by hour   │
+│  GET  /api/evening    │            │  api/cities.ts          globe     │
+│  GET  /api/cities     │            │  api/reserve.ts         POST      │
+│  POST /api/reserve    │            │  api/partner.ts   POST / DELETE   │
+│  POST/DELETE          │            │                │                  │
+│       /api/partner    │            │  api/_lib/  catalogue, clock,     │
+└──────────────────────┘            │  pricing, offers, partner         │
+                                     │  listings, store                  │
+                                     └────────────────┼──────────────────┘
+                                                      ▼
+                                     Upstash Redis database: reservations,
+                                     restaurant listings, rate limits
+                                     (everything expires after two days)
 ```
 
 - **Prices are never trusted from the browser.** The client sends only *which* offer and *how many*; `reserveOffer` recomputes the price from the server clock and the venue's time zone. A test sends a fake price of 0.01 and checks that it is ignored.
@@ -154,6 +174,7 @@ Browser (React)                    Server (serverless functions)
 |---|---|
 | Frontend | React 19, TypeScript, Vite, Tailwind CSS v4, React Router |
 | Backend | Serverless functions (Node.js, Vercel function format) |
+| Database | [Upstash for Redis](https://upstash.com/) via the Vercel marketplace (free tier), client `@upstash/redis`; in-memory fallback for development and tests |
 | Translations | Custom React context (EN/RO/RU), no external library |
 | Typography | Cormorant Garamond, Pinyon Script, Raleway (Google Fonts) |
 | Globe | HTML canvas + [d3-geo](https://github.com/d3/d3-geo) (orthographic projection, `geoCircle` for the night side) + [world-atlas](https://github.com/topojson/world-atlas) / [topojson-client](https://github.com/topojson/topojson-client); lazy-loaded as its own chunk |
@@ -170,15 +191,15 @@ Browser (React)                    Server (serverless functions)
 src/
   components/     UI (PageHero, Navbar, Footer, OfferCard, ReserveDialog, RescueGlobe, EveningBackground,
                   HistoryChart, ImpactLab, EveningPlanner, embeds…)
-  pages/          Problem, Solution, Tonight (home), City race, My profile
-  hooks/          useOffers, useCompare, useEveningPlanner, useProfile, useOrders, useCountUp
+  pages/          Problem, Solution, Tonight (home), City race, My profile, For restaurants, About
+  hooks/          useOffers, useCompare, useEveningPlanner, useProfile, useOrders, usePartnerListings, useCountUp
   context/        EveningMood (shares the last city looked at with the background)
   i18n/           EN/RO/RU translations + language context
   utils/          API client, recommendations, comparison, impact, planner, mood, sun position, formatting
   constants/      Urgency levels and colours, photography
 api/
-  offers.ts, offer-history.ts, evening.ts, cities.ts, reserve.ts   Serverless functions (deployable)
-  _lib/                                                            Shared backend logic + tests
+  offers.ts, offer-history.ts, evening.ts, cities.ts, reserve.ts, partner.ts   Serverless functions
+  _lib/           Shared backend logic + tests; store.ts = database (Redis or memory)
 vite-plugins/
   localApi.ts     Serves the same handlers in local development
 ```
@@ -191,7 +212,8 @@ vite-plugins/
 - **"Tonight" is different in every city.** A single server clock would open Tokyo's restaurants at Bucharest's dinner time. *Solution:* every city carries its IANA time zone; `localClock` reads the wall time there with `Intl.DateTimeFormat`, offer ids include the local date, and an offer from another day is rejected with `410 Gone`. Tested across Bucharest, Tokyo and New York at the same instant.
 - **Demo data that must behave like real data.** Random offers would change on every refresh and could not be tested. *Solution:* a seeded generator makes venues stable per city and batches stable per venue, slot and date; portions sold by others follow the time elapsed in the window; finished days in the history never change. All of this is unit-tested.
 - **A fair price curve.** A discount that jumps or decreases would confuse people. *Solution:* `discountFor` rises smoothly from 30% to 70% (`p^1.3`, slow at first, faster near the end) with a bounded leftover boost; tests check it never decreases, is clamped, and always makes the price strictly cheaper than the original.
-- **Two people reserving the last portion.** *Solution:* the server re-checks the portions left at the moment of reservation and answers `409 Conflict` when there are not enough; the dialog explains that someone was quicker and the listing refreshes. *Known limit:* reservations are kept in the memory of the serverless instance, so they reset when it restarts; a production version would store them in a database.
+- **Two people reserving the last portion.** The first version kept reservations in the server's memory: they were lost on every restart, and two copies of the server could each sell the same last portion. *Solution:* reservations moved to an Upstash Redis database. `tryReserve` uses Redis's atomic `INCRBY`; if the new total exceeds what is left it rolls back with `DECRBY` and answers `409 Conflict`, and the dialog explains that someone was quicker. Without a database (local development, tests) the same `Store` interface runs in memory.
+- **Letting anyone publish food on a public site.** A form open to the internet invites spam and abuse. *Solution:* every field is validated on the server: the city, a venue name of 2–40 letters, digits and simple punctuation (no links or markup), an item chosen from the catalogue (so diet and gluten labels are always correct), 1–20 portions, a price at most four times the catalogue price, and a closing time later today. Each connection may create five listings an hour and each city 25 a day; listings expire with the day; and only the holder of the secret token returned at creation can remove one (only a SHA-256 hash of the token is stored). Covered by `partnerListings.test.ts`.
 - **A recommendation people can trust.** "Best" means different things on a budget and off one. *Solution:* `getRecommendation` filters by diet (vegan implies vegetarian), prefers open offers over upcoming ones, ranks by share of the full price on a budget or by discount otherwise, and breaks ties by what closes first. Every rule is covered in `recommendations.test.ts`.
 - **Showing night on the globe without an astronomy library.** *Solution:* `utils/sun.ts` computes the sub-solar point from the date (solar declination and UTC hour); the night side is a `geoCircle` of radius 90° around its antipode, recomputed every minute. Tested for noon at Greenwich, the hourly 15° shift and the solstices.
 - **Prices in 22 currencies.** 4.47 lei, 742 yen and 12 345 won need different rounding. *Solution:* `niceRound` rounds to two significant steps of each price's own magnitude, and `formatMoney` uses `Intl.NumberFormat` with whole units above 100.
@@ -222,7 +244,7 @@ npm install
 npm run dev
 ```
 
-No API key or `.env` file is needed: the backend runs entirely on its own catalogue.
+No API key or `.env` file is needed: without database settings, reservations and restaurant listings are kept in memory. To use the real database locally, run `npx vercel env pull .env.local` after connecting Upstash for Redis to the Vercel project.
 
 ## Testing
 
@@ -230,11 +252,11 @@ No API key or `.env` file is needed: the backend runs entirely on its own catalo
 npm test
 ```
 
-91 tests cover the backend (catalogue and city lookup, time zones, the price curve and rounding, offer status across the evening, reservations and every error case, history, the hourly evening view and the globe pulse) and the frontend logic (recommendations for every diet, the planner, the city comparison, the impact calculator, the background mood, urgency levels, the sun position and formatting).
+112 tests cover the backend (catalogue and city lookup, time zones, the price curve and rounding, offer status across the evening, reservations and every error case, restaurant listings with validation, rate limits and token-protected removal, the atomic storage rules, history, the hourly evening view and the globe pulse) and the frontend logic (recommendations for every diet, the planner, the city comparison, the impact calculator, the background mood, urgency levels, the sun position and formatting).
 
 ## Deployment
 
-The live app runs on [Vercel](https://vercel.com) at **https://wasteland-indol.vercel.app**. The `api/*.ts` structure is recognised automatically: import the repository (or run `npx vercel --prod`) and deploy. No environment variables are required. `vercel.json` rewrites every non-API route to `index.html`, so direct links to inner pages work.
+The live app runs on [Vercel](https://vercel.com) at **https://wasteland-indol.vercel.app**. The `api/*.ts` structure is recognised automatically: import the repository (or run `npx vercel --prod`) and deploy. The database is the **Upstash for Redis** integration from the Vercel marketplace; connecting it to the project adds its `KV_REST_API_URL` and `KV_REST_API_TOKEN` variables automatically. `vercel.json` rewrites every non-API route to `index.html`, so direct links to inner pages work.
 
 ## Sources
 

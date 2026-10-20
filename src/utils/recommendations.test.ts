@@ -7,7 +7,7 @@ const NOBODY: UserProfile = { vegetarian: false, vegan: false, glutenFree: false
 function offer(overrides: Partial<Offer>): Offer {
   return {
     id: 'x', venueId: 'paris.0', venueName: 'Café Test', category: 'cafe', item: 'quiche', diet: 'vegetarian', glutenFree: false,
-    lat: 0, lon: 0, status: 'live', currency: 'EUR', originalPrice: 10, price: 6, discountPct: 40, quantityTotal: 5,
+    lat: 0, lon: 0, source: 'demo', status: 'live', currency: 'EUR', originalPrice: 10, price: 6, discountPct: 40, quantityTotal: 5,
     quantityLeft: 3, kgPerPortion: 0.5, pickupFrom: '17:00', pickupUntil: '20:00', minutesToOpen: 0, minutesToClose: 60,
     ...overrides,
   }

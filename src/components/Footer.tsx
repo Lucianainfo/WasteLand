@@ -19,6 +19,7 @@ export function Footer() {
     { to: '/solution', label: t.nav.solution },
     { to: '/compare', label: t.nav.compare },
     { to: '/profile', label: t.nav.profile },
+    { to: '/partner', label: t.footer.partner },
     { to: '/about', label: t.footer.about },
   ]
 

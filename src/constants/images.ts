@@ -31,8 +31,9 @@ const CATEGORY_IMAGES: Record<Category, [string, string]> = {
   grocery: ['1488459716781-31db52582fe9', '1566385101042-1a0aa0c1268c'],
 }
 
-/** A photo for an offer card; the two venues of the same kind in a city get different photos. */
+/** A photo for an offer card; venues of the same kind in a city alternate between two photos. */
 export function categoryImage(category: Category, venueId: string): string {
-  const index = Number(venueId.split('.').at(-1)) % 2
-  return CATEGORY_IMAGES[category][index]
+  let sum = 0
+  for (const ch of venueId) sum += ch.charCodeAt(0)
+  return CATEGORY_IMAGES[category][sum % 2]
 }

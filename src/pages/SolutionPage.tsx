@@ -99,6 +99,39 @@ export function SolutionPage() {
         </div>
       </section>
 
+      {/* How WasteLand differs from surprise-bag apps */}
+      <section className="relative py-24 sm:py-32">
+        <div className="relative z-[2] mx-auto max-w-5xl px-6">
+          <SectionHeading eyebrow={s.vsEyebrow} line1={s.vsTitle1} line2={s.vsTitle2} />
+          <p className="mx-auto mt-6 max-w-2xl text-center text-[var(--text-muted)]">{s.vsText}</p>
+          <Reveal className="mt-14">
+            <div className="card-lux overflow-hidden">
+              <div className="hidden grid-cols-[1fr_1.4fr_1.4fr] bg-[var(--cocoa-deep)] text-[var(--champagne)] sm:grid">
+                <span />
+                <p className="eyebrow px-6 py-4 text-[var(--gold)]">{s.vsColUs}</p>
+                <p className="eyebrow px-6 py-4 text-[var(--champagne)]/60">{s.vsColThem}</p>
+              </div>
+              <dl className="divide-y divide-[var(--border)]">
+                {s.vsRows.map((row) => (
+                  <div key={row.topic} className="grid gap-2 px-6 py-5 sm:grid-cols-[1fr_1.4fr_1.4fr] sm:gap-0 sm:px-0 sm:py-0">
+                    <dt className="font-display text-xl text-[var(--text)] sm:px-6 sm:py-5">{row.topic}</dt>
+                    <dd className="text-sm text-[var(--text)] sm:border-l sm:border-[var(--border)] sm:bg-[var(--accent-soft)]/40 sm:px-6 sm:py-5">
+                      <span className="eyebrow mr-2 text-[0.55rem] text-[var(--accent)] sm:hidden">{s.vsColUs}</span>
+                      {row.us}
+                    </dd>
+                    <dd className="text-sm text-[var(--text-soft)] sm:border-l sm:border-[var(--border)] sm:px-6 sm:py-5">
+                      <span className="eyebrow mr-2 text-[0.55rem] sm:hidden">{s.vsColThem}</span>
+                      {row.them}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </Reveal>
+          <p className="mx-auto mt-6 max-w-2xl text-center text-xs italic text-[var(--text-soft)]">{s.vsNote}</p>
+        </div>
+      </section>
+
       {/* Organisations */}
       <section className="relative bg-[var(--cocoa-deep)] py-24 sm:py-32">
         <div className="relative z-[2] mx-auto max-w-6xl px-6">

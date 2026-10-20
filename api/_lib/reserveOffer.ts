@@ -1,9 +1,8 @@
 import { findCity } from './catalog.js'
 import { localClock } from './clock.js'
 import type { ApiOutcome } from './getOffers.js'
-import { buildOffersAt } from './offers.js'
-import { hashString } from './random.js'
-import { addReservation, reservationCount, reservedUnits } from './reservations.js'
+import { loadOffersAt } from './offers.js'
+import { getStore, type Store } from './store.js'
 
 export const MAX_UNITS_PER_RESERVATION = 4
 
@@ -24,22 +23,19 @@ export interface Reservation {
 
 const CODE_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
 
-function pickupCode(offerId: string, serial: number): string {
-  let n = hashString(`${offerId}|${serial}|${Date.now()}`)
-  let code = ''
-  for (let i = 0; i < 5; i++) {
-    code += CODE_ALPHABET[n % CODE_ALPHABET.length]
-    n = Math.floor(n / CODE_ALPHABET.length)
-  }
-  return `WL-${code}`
+/** Five random characters from an alphabet without look-alikes (no 0/O, 1/I). */
+function pickupCode(): string {
+  const bytes = crypto.getRandomValues(new Uint8Array(5))
+  return `WL-${[...bytes].map((b) => CODE_ALPHABET[b % CODE_ALPHABET.length]).join('')}`
 }
 
 /**
  * Backend logic for POST /api/reserve. The browser only sends *which* offer and *how many*;
  * the price is recomputed here from the server clock, so the amount on the pickup ticket is
- * always the real current last-call price, never a number sent by the client.
+ * always the real current last-call price, never a number sent by the client. The portions are
+ * taken with an atomic database operation, so two people can't both reserve the last one.
  */
-export function reserveOffer(body: unknown, now = new Date()): ApiOutcome<Reservation> {
+export async function reserveOffer(body: unknown, now = new Date(), store: Store = getStore()): Promise<ApiOutcome<Reservation>> {
   const input = (typeof body === 'object' && body !== null ? body : {}) as Record<string, unknown>
   const { offerId, quantity } = input
 
@@ -61,23 +57,25 @@ export function reserveOffer(body: unknown, now = new Date()): ApiOutcome<Reserv
     return { status: 410, body: { error: 'This offer has expired' } }
   }
 
-  const offer = buildOffersAt(city, clock.date, clock.minutes, reservedUnits).find((o) => o.id === offerId)
+  const offer = (await loadOffersAt(city, clock.date, clock.minutes, store)).find((o) => o.id === offerId)
   if (!offer) {
     return { status: 404, body: { error: 'Offer not found' } }
   }
   if (offer.status === 'closed') {
     return { status: 410, body: { error: 'Pickup for this offer has closed' } }
   }
-  if (quantity > offer.quantityLeft) {
+
+  // Capacity = what is still available before any reservation made through WasteLand.
+  const alreadyReserved = (await store.reserved([offerId])).get(offerId) ?? 0
+  const capacity = offer.quantityLeft + alreadyReserved
+  if (quantity > offer.quantityLeft || !(await store.tryReserve(offerId, quantity, capacity))) {
     return { status: 409, body: { error: offer.quantityLeft === 0 ? 'Sold out' : `Only ${offer.quantityLeft} left` } }
   }
-
-  addReservation(offerId, quantity)
 
   return {
     status: 200,
     body: {
-      code: pickupCode(offerId, reservationCount()),
+      code: pickupCode(),
       offerId,
       venueName: offer.venueName,
       item: offer.item,

@@ -3,6 +3,7 @@ import citiesHandler from '../api/cities.js'
 import eveningHandler from '../api/evening.js'
 import historyHandler from '../api/offer-history.js'
 import offersHandler from '../api/offers.js'
+import partnerHandler from '../api/partner.js'
 import reserveHandler from '../api/reserve.js'
 
 /**
@@ -16,6 +17,7 @@ export function localApiPlugin(): Plugin {
     '/api/evening': eveningHandler,
     '/api/cities': citiesHandler,
     '/api/reserve': reserveHandler,
+    '/api/partner': partnerHandler,
   }
 
   return {

@@ -1,4 +1,5 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import { ErrorBanner } from '../components/ErrorBanner'
 import { GlobalWasteStrip } from '../components/GlobalWasteStrip'
 import { HistoryChart } from '../components/HistoryChart'
@@ -36,6 +37,20 @@ export function HomePage() {
   const [reserving, setReserving] = useState<Offer | null>(null)
   const searchRef = useRef<HTMLDivElement>(null)
   const closeDialog = useCallback(() => setReserving(null), [])
+  const [params] = useSearchParams()
+  const linkedCity = params.get('city')
+  const searchFn = useRef(search)
+
+  useEffect(() => {
+    searchFn.current = search
+  })
+
+  // "/?city=paris" (e.g. from the partner page) opens that city's offers straight away — only when the link changes.
+  useEffect(() => {
+    if (!linkedCity) return
+    void searchFn.current(linkedCity)
+    window.setTimeout(() => searchRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300)
+  }, [linkedCity])
 
   useEffect(() => {
     if (profile.lastCallAlerts) void requestNotificationPermission()
@@ -172,6 +187,16 @@ export function HomePage() {
             )}
 
             <OrdersPanel orders={orders} onClear={clearOrders} />
+
+            <div className="mx-auto mt-20 flex max-w-3xl flex-col items-center gap-6 border-y border-[var(--border)] py-10 text-center sm:flex-row sm:text-left">
+              <div className="flex-1">
+                <p className="font-display text-3xl text-[var(--text)]">{t.home.partnerCtaTitle}</p>
+                <p className="mt-2 text-sm text-[var(--text-muted)]">{t.home.partnerCtaText}</p>
+              </div>
+              <Link to="/partner" className="btn-lux btn-ghost shrink-0">
+                {t.home.partnerCtaButton}
+              </Link>
+            </div>
 
             <p className="mx-auto mt-16 max-w-2xl text-center text-xs italic text-[var(--text-soft)]">{t.home.demoNote}</p>
           </div>

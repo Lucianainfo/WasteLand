@@ -59,6 +59,7 @@ export function OfferCard({ offer, highlighted = false, onReserve }: OfferCardPr
       </div>
 
       <div className="flex flex-1 flex-col p-6">
+        {offer.source === 'partner' && <p className="eyebrow mb-2 text-[0.58rem] text-[var(--accent)]">◆ {t.offer.partnerBadge}</p>}
         <h3 className="font-display text-2xl leading-tight text-[var(--text)]">{t.items[offer.item]}</h3>
 
         {tags.length > 0 && (

@@ -38,6 +38,8 @@ export interface Offer {
   glutenFree: boolean
   lat: number
   lon: number
+  /** "demo" = simulated partner network; "partner" = listed by a venue on the partner page. */
+  source: 'demo' | 'partner'
   status: OfferStatus
   currency: string
   originalPrice: number
@@ -96,6 +98,7 @@ export interface GlobeCity {
   lat: number
   lon: number
   localTime: string
+  currency: string
   liveNow: number
   upcoming: number
   portionsLeft: number
@@ -121,6 +124,35 @@ export interface Reservation {
 export interface SavedOrder extends Reservation {
   cityName: string
   createdAt: number
+}
+
+/** A listing created on the partner page, as returned by POST /api/partner. */
+export interface PartnerListing {
+  id: string
+  cityId: string
+  date: string
+  venueName: string
+  category: Category
+  item: ItemKey
+  portions: number
+  originalPrice: number
+  closeMinutes: number
+  createdAt: number
+}
+
+export interface CreatedListing {
+  listing: PartnerListing
+  token: string
+  offer: Offer
+}
+
+/** A listing as kept on the partner's device, with the secret token needed to remove it. */
+export interface SavedListing {
+  listing: PartnerListing
+  token: string
+  cityName: string
+  currency: string
+  removed?: boolean
 }
 
 export interface UserProfile {

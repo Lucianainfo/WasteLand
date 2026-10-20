@@ -1,8 +1,8 @@
 import type { Category, Diet } from './catalog.js'
 import { formatMinutes, localClock } from './clock.js'
 import { cityInfo, resolveCity, type ApiOutcome, type CityInfo } from './getOffers.js'
-import { buildOffersAt, type ReservedLookup } from './offers.js'
-import { reservedUnits } from './reservations.js'
+import { prepareCity, type Offer } from './offers.js'
+import { getStore, type Store } from './store.js'
 
 /** A trimmed-down offer: just what the planner needs to score an hour. */
 export interface SlotOffer {
@@ -26,7 +26,7 @@ export interface EveningHour {
  * how deep their discount will be by then. The planner on the profile page turns this into
  * "the best time to go" for the user's diet and budget.
  */
-export function eveningHours(cityTz: string, build: (minutes: number) => ReturnType<typeof buildOffersAt>, now: Date): EveningHour[] {
+export function eveningHours(cityTz: string, build: (minutes: number) => Offer[], now: Date): EveningHour[] {
   const clock = localClock(cityTz, now)
   const firstHour = Math.floor(clock.minutes / 60)
   const hours: EveningHour[] = []
@@ -41,15 +41,15 @@ export function eveningHours(cityTz: string, build: (minutes: number) => ReturnT
 }
 
 /** Backend logic for GET /api/evening?city=... */
-export function getEvening(
+export async function getEvening(
   query: string | null,
   now = new Date(),
-  reserved: ReservedLookup = reservedUnits
-): ApiOutcome<{ city: CityInfo; hours: EveningHour[] }> {
+  store: Store = getStore()
+): Promise<ApiOutcome<{ city: CityInfo; hours: EveningHour[] }>> {
   const resolved = resolveCity(query)
   if (!resolved.ok) return resolved.outcome
   const { city } = resolved
   const date = localClock(city.tz, now).date
-  const hours = eveningHours(city.tz, (minutes) => buildOffersAt(city, date, minutes, reserved), now)
+  const hours = eveningHours(city.tz, await prepareCity(city, date, store), now)
   return { status: 200, body: { city: cityInfo(city, now), hours } }
 }

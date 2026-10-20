@@ -1,7 +1,7 @@
 import { CITIES, findCity, type City } from './catalog.js'
 import { formatMinutes, localClock } from './clock.js'
-import { currentOffers, type Offer, type ReservedLookup } from './offers.js'
-import { reservedUnits } from './reservations.js'
+import { currentOffers, type Offer } from './offers.js'
+import { getStore, type Store } from './store.js'
 
 export interface CityInfo {
   id: string
@@ -21,7 +21,7 @@ export interface OffersResult {
 
 export type ApiOutcome<T> =
   | { status: 200; body: T }
-  | { status: 400 | 404 | 405 | 409 | 410 | 500; body: { error: string; available?: string[] } }
+  | { status: 400 | 403 | 404 | 405 | 409 | 410 | 429 | 500; body: { error: string; available?: string[] } }
 
 export function cityInfo(city: City, now: Date): CityInfo {
   return {
@@ -55,9 +55,9 @@ export function resolveCity(query: string | null): { ok: true; city: City } | { 
  * Prices are never computed in the browser, so nobody can edit a request to pay less than the
  * real last-call price. Shared by the serverless function and the local dev middleware.
  */
-export function getOffers(query: string | null, now = new Date(), reserved: ReservedLookup = reservedUnits): ApiOutcome<OffersResult> {
+export async function getOffers(query: string | null, now = new Date(), store: Store = getStore()): Promise<ApiOutcome<OffersResult>> {
   const resolved = resolveCity(query)
   if (!resolved.ok) return resolved.outcome
   const { city } = resolved
-  return { status: 200, body: { city: cityInfo(city, now), offers: currentOffers(city, now, reserved) } }
+  return { status: 200, body: { city: cityInfo(city, now), offers: await currentOffers(city, now, store) } }
 }

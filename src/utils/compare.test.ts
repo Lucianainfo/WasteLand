@@ -4,7 +4,7 @@ import { barWidths, compareCities, summarize, type CitySummary } from './compare
 
 function offer(o: Partial<Offer>): Offer {
   return {
-    id: 'x', venueId: 'a.0', venueName: 'V', category: 'bakery', item: 'baguettes', diet: 'vegan', glutenFree: false, lat: 0, lon: 0,
+    id: 'x', venueId: 'a.0', venueName: 'V', category: 'bakery', item: 'baguettes', diet: 'vegan', glutenFree: false, lat: 0, lon: 0, source: 'demo',
     status: 'live', currency: 'EUR', originalPrice: 4, price: 2, discountPct: 50, quantityTotal: 6, quantityLeft: 2, kgPerPortion: 0.5,
     pickupFrom: '17:00', pickupUntil: '20:00', minutesToOpen: 0, minutesToClose: 60, ...o,
   }

@@ -8,6 +8,7 @@ import { LanguageProvider } from './i18n/LanguageContext'
 import { AboutPage } from './pages/AboutPage'
 import { ComparePage } from './pages/ComparePage'
 import { HomePage } from './pages/HomePage'
+import { PartnerPage } from './pages/PartnerPage'
 import { ProblemPage } from './pages/ProblemPage'
 import { ProfilePage } from './pages/ProfilePage'
 import { SolutionPage } from './pages/SolutionPage'
@@ -34,6 +35,7 @@ function AppShell() {
           <Route path="/solution" element={<SolutionPage />} />
           <Route path="/compare" element={<ComparePage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/partner" element={<PartnerPage />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>
       </main>

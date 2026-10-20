@@ -9,6 +9,6 @@ export default async function handler(req: RequestWithQuery, res: ServerResponse
     sendJson(res, 405, { error: 'Use POST' })
     return
   }
-  const result = reserveOffer(await readJsonBody(req))
+  const result = await reserveOffer(await readJsonBody(req))
   sendJson(res, result.status, result.body)
 }

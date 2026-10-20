@@ -21,18 +21,25 @@ The student's prompts, verbatim (spelling as typed):
 
 3. > use vervel to publish the site and also let the site have all of the guidelines schecked from this site because i have to register it on a championship: https://www.infomatrix.ro
 
+4. > is the site good?
+
+   The AI gave an honest review: strong design, technical depth and documentation, but a risk on originality (Too Good To Go already exists), no way for restaurants to list food, and reservations lost when the server restarts. It proposed three improvements.
+
+5. > add the 3 things and after explain to me like i knew nothing in coding what did you use in this project (verce;, adatabse etc....)
+
 ## What the AI did with them
 
 | Prompt | Output |
 |---|---|
 | 1 | Read the student's earlier project (ClimaWatch) and mirrored its structure: same five pages, serverless `api/` + local Vite emulator, EN/RO/RU, tests. Studied the reference site's visual language (palette, typefaces, layout) without copying its code or images. Designed the food-rescue model: time-zone-aware pickup windows, server-side dynamic pricing, reservations, profile-based recommendation, globe, impact lab, planner. Wrote the code, 91 tests and the README. |
 | 2 | Configured Git in this repository only, using GitHub's private no-reply address. |
+| 4–5 | Added the partner page where restaurants list their own surplus (validated on the server, rate-limited, removable only with a secret token), connected an Upstash Redis database through Vercel so reservations and listings persist and the last portion can't be sold twice, added the "Not another surprise bag" comparison and 21 new tests, then explained the technologies to the student in plain language. |
 | 3 | Read the Infomatrix regulations and the Software Development rubric, added this log, the "About the project" page, the design sketches, the third-party licence list and the requirements checklist in the README, then deployed to Vercel. |
 
 ## Human oversight
 
 - Every product decision came from the student: the problem, the win-win-win model, the reference design, and the requirement to follow ClimaWatch's structure.
-- The code is run, not just generated. 91 automated tests (`npm test`), a TypeScript build (`npm run build`) and a linter (`npm run lint`) all pass.
+- The code is run, not just generated. 112 automated tests (`npm test`), a TypeScript build (`npm run build`) and a linter (`npm run lint`) all pass.
 - Every page was checked in a real browser on desktop and at phone width (375 px), in all three languages. Problems found in that review were fixed before release (see the iterations in the README), for example a dish labelled vegetarian that contains bacon.
 - Every statistic links to its source. The impact calculator lists its factors and sources in the interface.
 - The site says openly that the partner venues are a simulated demo network.
@@ -41,7 +48,7 @@ The student's prompts, verbatim (spelling as typed):
 
 ```bash
 npm install
-npm test        # 91 tests
+npm test        # 112 tests
 npm run lint
 npm run build
 npm run dev     # http://localhost:5173
