@@ -3,5 +3,12 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+  // Read by Vercel when it type-checks the serverless functions in api/ on its own.
+  "compilerOptions": {
+    "types": ["node"],
+    "module": "nodenext",
+    "target": "es2023",
+    "skipLibCheck": true
+  }
 }
