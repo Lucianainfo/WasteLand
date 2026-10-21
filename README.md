@@ -4,7 +4,7 @@
 
 Project submitted to Infomatrix, category **Software Development** (Project Contest).
 
-### 🔴 [Try the live app → wasteland-indol.vercel.app](https://wasteland-indol.vercel.app)
+### 🔴 [Try the live app → waste-land-beta.vercel.app](https://waste-land-beta.vercel.app)
 
 ### Infomatrix requirements checklist
 
@@ -256,7 +256,7 @@ npm test
 
 ## Deployment
 
-The live app runs on [Vercel](https://vercel.com) at **https://wasteland-indol.vercel.app**. The `api/*.ts` structure is recognised automatically: import the repository (or run `npx vercel --prod`) and deploy. The database is the **Upstash for Redis** integration from the Vercel marketplace; connecting it to the project adds its `KV_REST_API_URL` and `KV_REST_API_TOKEN` variables automatically. `vercel.json` rewrites every non-API route to `index.html`, so direct links to inner pages work.
+The live app runs on [Vercel](https://vercel.com) at **https://waste-land-beta.vercel.app**. The `api/*.ts` structure is recognised automatically: import the repository (or run `npx vercel --prod`) and deploy. The database is the **Upstash for Redis** integration from the Vercel marketplace; connecting it to the project adds its `KV_REST_API_URL` and `KV_REST_API_TOKEN` variables automatically. `vercel.json` rewrites every non-API route to `index.html`, so direct links to inner pages work.
 
 ## Sources
 
