@@ -104,7 +104,7 @@ Apps such as **Too Good To Go** already rescue a lot of food, mostly as "surpris
 
 | Role | Name |
 |---|---|
-| Student developer | Mihai Chircu |
+| Student developer | Luciana Posturusu |
 | Supervisor | Azamat Jayush |
 
 Team size: 1 student (solo entry), within the category's 1–2 student limit.

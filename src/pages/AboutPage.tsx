@@ -6,7 +6,7 @@ import { STORY_IMAGES } from '../constants/images'
 import { REPO_URL } from '../constants/links'
 import { useLanguage } from '../i18n/LanguageContext'
 
-const TEAM = { student: 'Mihai Chircu', supervisor: 'Azamat Jayush' }
+const TEAM = { student: 'Luciana Posturusu', supervisor: 'Azamat Jayush' }
 
 const CREDITS = [
   { name: 'UNEP Food Waste Index Report 2024', url: 'https://www.unep.org/resources/publication/food-waste-index-report-2024', licence: 'Statistics, cited' },
