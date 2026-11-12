@@ -133,7 +133,7 @@ ${resultRows}
 <li>Su X. Intertemporal pricing with strategic customer behavior. Management Science 2007;53(5):726–741.</li>
 <li>Efron B., Tibshirani R.J. An Introduction to the Bootstrap. Chapman &amp; Hall; 1993.</li>
 <li>National Bank of Moldova. Official exchange rate pages, 5–6 November 2026 (20.1773 and 20.1089 MDL per EUR). bnm.md.</li>
-<li>Vercel. Pricing (Hobby: USD 0, personal use, non-commercial per its FAQ; Pro: USD 20 a month excluding VAT; checked 12 November 2026). vercel.com/pricing.</li>
+<li>Vercel. Pricing (Hobby: USD 0, non-commercial personal use; Pro: USD 20 a month excluding VAT; checked 12 November 2026). vercel.com/pricing and vercel.com/docs/limits/fair-use-guidelines.</li>
 <li>Upstash. Redis pricing (500,000 free commands a month, then USD 0.20 per 100,000). upstash.com/pricing/redis.</li>
 </ol>
 <p><b>Availability.</b> Code, pre-registration, results and logbook: <i>research/</i>, <i>docs/moldsef/</i> in the repository.</p>
