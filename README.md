@@ -45,7 +45,7 @@ For reviewers: every claim below points to a file or a test that can be checked,
 * All four hypotheses are only partially supported; the 1.3 exponent is a plateau, not a proven optimum; the advantage over a fixed discount disappears if no customer waits for the price to fall.
 * Unverified inputs: the 25–30% commission rates (the supervisor's figures), the disposal-cost placeholder, and three literature references written from memory. (The Vercel Pro price, USD 20 a month excluding VAT, was confirmed on vercel.com/pricing on 12 November 2026 (screenshot sent by the student).)
 * The pre-registration was written before the simulator but was not committed to Git before the run (its hash is stored in the results).
-* Team size: a solo entry whose two-role exception is still to be confirmed with the supervisor.
+* Team size: a solo entry. The supervisor said this is fine (the student's word, recorded on 12 November 2026); the student carries both roles.
 
 ---
 
@@ -135,7 +135,7 @@ Apps such as **Too Good To Go** already rescue a lot of food, mostly as "surpris
 
 Team size: 1 student (solo entry), within the category's 1–2 student limit.
 
-**Roles.** The supervisor's evaluation says the Advanced Track expects two roles. **Status: to be confirmed with the supervisor** whether a solo entry is allowed. Until then the student carries both:
+**Roles.** The supervisor's evaluation says the Advanced Track expects two roles. **Status: the supervisor said a solo entry is fine** (the student's word, recorded on 12 November 2026). The student therefore carries both:
 
 | Role | Deliverables |
 |---|---|

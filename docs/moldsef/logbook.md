@@ -6,7 +6,7 @@
 
 ## Team and roles
 
-The README lists a **solo entry** (one student). The supervisor's evaluation says the Advanced Track expects two roles. **Status: to be confirmed with the supervisor** (whether a solo exception exists). Until then the student carries both:
+The README lists a **solo entry** (one student). The supervisor's evaluation says the Advanced Track expects two roles. **Status: the supervisor said a solo entry is fine** (the student's word, relayed by the classmate helping them, 2026-11-12). The student therefore carries both:
 
 | Role | Deliverables | Where |
 |---|---|---|
@@ -98,5 +98,5 @@ Trigger: the supervisor's evaluation of Submission #1 (score 76%, 8/10) asked fo
 ## D. Items the student must do
 
 - Every *Student check* box is ticked on 2026-11-12 on the student's word, relayed by the classmate helping them. If a box is not true, untick it: the jury may ask about any of them.
-- Confirm with the supervisor whether the solo entry is allowed, and fill the roles table and Q&A answer 16 in `docs/PITCH.md`.
+- The supervisor said the solo entry is fine (the student's word, 2026-11-12); keep the roles table and Q&A answer 16 in `docs/PITCH.md` as written, and be able to say what each role delivered.
 - Be ready to explain, without AI, every function the jury asks about: `tryReserve` (`INCRBY`), `seededRandom` (`mulberry32`), `discountFor`, `runTrial`.
