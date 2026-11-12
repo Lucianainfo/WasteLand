@@ -41,6 +41,7 @@ export function Navbar() {
   ]
   const right = [
     { to: '/compare', label: t.nav.compare, end: false },
+    { to: '/research', label: t.nav.research, end: false },
     { to: '/profile', label: t.nav.profile, end: false },
   ]
 

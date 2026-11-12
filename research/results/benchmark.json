@@ -1,0 +1,1019 @@
+{
+ "meta": {
+  "run": "registered",
+  "date": "2026-11-12",
+  "node": "v24.21.0",
+  "trialsPerCell": 2000,
+  "cells": 9,
+  "totalTrials": 18000,
+  "bootstrapResamples": 2000,
+  "seedPrefix": "wl|v1",
+  "bootstrapSeed": "wl|boot|v1",
+  "preregistrationSha256": "c209c8e4051ddf41133c7e1c0ca41edba2779830ab1af019d35e51c32d0efb28",
+  "seconds": 39.3
+ },
+ "primary": {
+  "cells": [
+   {
+    "id": 1,
+    "demand": 0.75,
+    "wtpMean": 0.35,
+    "methods": {
+     "A": {
+      "sellThrough": 0.18259,
+      "revenue": 4.70785,
+      "surplus": 1.08589,
+      "kg": 0.77685
+     },
+     "B": {
+      "sellThrough": 0.288349,
+      "revenue": 6.41605,
+      "surplus": 1.513743,
+      "kg": 1.251825
+     },
+     "C": {
+      "sellThrough": 0.303771,
+      "revenue": 6.497265,
+      "surplus": 1.582584,
+      "kg": 1.316025
+     },
+     "A2": {
+      "sellThrough": 0.426674,
+      "revenue": 7.3497,
+      "surplus": 3.724536,
+      "kg": 1.833075
+     }
+    }
+   },
+   {
+    "id": 2,
+    "demand": 0.75,
+    "wtpMean": 0.45,
+    "methods": {
+     "A": {
+      "sellThrough": 0.294074,
+      "revenue": 7.6305,
+      "surplus": 2.183102,
+      "kg": 1.26805
+     },
+     "B": {
+      "sellThrough": 0.388307,
+      "revenue": 9.0064,
+      "surplus": 2.590043,
+      "kg": 1.69155
+     },
+     "C": {
+      "sellThrough": 0.393207,
+      "revenue": 8.864985,
+      "surplus": 2.594919,
+      "kg": 1.7011
+     },
+     "A2": {
+      "sellThrough": 0.528793,
+      "revenue": 9.07145,
+      "surplus": 5.764589,
+      "kg": 2.2862
+     }
+    }
+   },
+   {
+    "id": 3,
+    "demand": 0.75,
+    "wtpMean": 0.55,
+    "methods": {
+     "A": {
+      "sellThrough": 0.4407,
+      "revenue": 11.62275,
+      "surplus": 3.893055,
+      "kg": 1.8053
+     },
+     "B": {
+      "sellThrough": 0.490979,
+      "revenue": 11.928,
+      "surplus": 4.361104,
+      "kg": 2.036025
+     },
+     "C": {
+      "sellThrough": 0.48729,
+      "revenue": 11.79035,
+      "surplus": 4.279821,
+      "kg": 2.014775
+     },
+     "A2": {
+      "sellThrough": 0.612782,
+      "revenue": 10.66725,
+      "surplus": 8.508798,
+      "kg": 2.548425
+     }
+    }
+   },
+   {
+    "id": 4,
+    "demand": 1.5,
+    "wtpMean": 0.35,
+    "methods": {
+     "A": {
+      "sellThrough": 0.365718,
+      "revenue": 9.15365,
+      "surplus": 2.065749,
+      "kg": 1.458725
+     },
+     "B": {
+      "sellThrough": 0.555846,
+      "revenue": 11.7591,
+      "surplus": 2.800195,
+      "kg": 2.198175
+     },
+     "C": {
+      "sellThrough": 0.573048,
+      "revenue": 11.788915,
+      "surplus": 2.824533,
+      "kg": 2.25125
+     },
+     "A2": {
+      "sellThrough": 0.753693,
+      "revenue": 12.50535,
+      "surplus": 6.346151,
+      "kg": 3.030825
+     }
+    }
+   },
+   {
+    "id": 5,
+    "demand": 1.5,
+    "wtpMean": 0.45,
+    "methods": {
+     "A": {
+      "sellThrough": 0.567639,
+      "revenue": 14.65315,
+      "surplus": 4.07014,
+      "kg": 2.3639
+     },
+     "B": {
+      "sellThrough": 0.708997,
+      "revenue": 16.43275,
+      "surplus": 4.713273,
+      "kg": 2.93925
+     },
+     "C": {
+      "sellThrough": 0.710678,
+      "revenue": 16.35138,
+      "surplus": 4.631233,
+      "kg": 2.94385
+     },
+     "A2": {
+      "sellThrough": 0.849701,
+      "revenue": 14.47665,
+      "surplus": 9.268534,
+      "kg": 3.529925
+     }
+    }
+   },
+   {
+    "id": 6,
+    "demand": 1.5,
+    "wtpMean": 0.55,
+    "methods": {
+     "A": {
+      "sellThrough": 0.761138,
+      "revenue": 19.83725,
+      "surplus": 6.685142,
+      "kg": 3.26335
+     },
+     "B": {
+      "sellThrough": 0.819942,
+      "revenue": 20.3689,
+      "surplus": 6.788133,
+      "kg": 3.495825
+     },
+     "C": {
+      "sellThrough": 0.815026,
+      "revenue": 20.400705,
+      "surplus": 6.54493,
+      "kg": 3.473525
+     },
+     "A2": {
+      "sellThrough": 0.911411,
+      "revenue": 15.6051,
+      "surplus": 12.434354,
+      "kg": 3.889825
+     }
+    }
+   },
+   {
+    "id": 7,
+    "demand": 3,
+    "wtpMean": 0.35,
+    "methods": {
+     "A": {
+      "sellThrough": 0.654284,
+      "revenue": 16.851,
+      "surplus": 3.822289,
+      "kg": 2.746
+     },
+     "B": {
+      "sellThrough": 0.863958,
+      "revenue": 19.781,
+      "surplus": 4.266239,
+      "kg": 3.633575
+     },
+     "C": {
+      "sellThrough": 0.872255,
+      "revenue": 19.81409,
+      "surplus": 4.168036,
+      "kg": 3.656325
+     },
+     "A2": {
+      "sellThrough": 0.964228,
+      "revenue": 16.17015,
+      "surplus": 8.239277,
+      "kg": 4.00045
+     }
+    }
+   },
+   {
+    "id": 8,
+    "demand": 3,
+    "wtpMean": 0.45,
+    "methods": {
+     "A": {
+      "sellThrough": 0.883947,
+      "revenue": 22.81375,
+      "surplus": 6.281106,
+      "kg": 3.76065
+     },
+     "B": {
+      "sellThrough": 0.957722,
+      "revenue": 23.8574,
+      "surplus": 5.729775,
+      "kg": 4.02965
+     },
+     "C": {
+      "sellThrough": 0.956243,
+      "revenue": 24.02868,
+      "surplus": 5.522018,
+      "kg": 4.0241
+     },
+     "A2": {
+      "sellThrough": 0.989442,
+      "revenue": 16.5235,
+      "surplus": 10.510679,
+      "kg": 4.131125
+     }
+    }
+   },
+   {
+    "id": 9,
+    "demand": 3,
+    "wtpMean": 0.55,
+    "methods": {
+     "A": {
+      "sellThrough": 0.971222,
+      "revenue": 24.42995,
+      "surplus": 8.385044,
+      "kg": 3.9671
+     },
+     "B": {
+      "sellThrough": 0.98412,
+      "revenue": 26.1969,
+      "surplus": 6.914196,
+      "kg": 4.0012
+     },
+     "C": {
+      "sellThrough": 0.983448,
+      "revenue": 26.74445,
+      "surplus": 6.581669,
+      "kg": 3.996825
+     },
+     "A2": {
+      "sellThrough": 0.996125,
+      "revenue": 16.3425,
+      "surplus": 13.033742,
+      "kg": 4.030275
+     }
+    }
+   }
+  ],
+  "pooled": {
+   "A": {
+    "sellThrough": 0.569035,
+    "revenue": 14.633317,
+    "surplus": 4.274613,
+    "kg": 2.378881
+   },
+   "B": {
+    "sellThrough": 0.673136,
+    "revenue": 16.194056,
+    "surplus": 4.408522,
+    "kg": 2.808564
+   },
+   "C": {
+    "sellThrough": 0.677218,
+    "revenue": 16.253424,
+    "surplus": 4.303305,
+    "kg": 2.819753
+   },
+   "A2": {
+    "sellThrough": 0.781428,
+    "revenue": 13.190183,
+    "surplus": 8.647851,
+    "kg": 3.253347
+   }
+  },
+  "hypotheses": {
+   "H1a": {
+    "metric": "sellThrough",
+    "baseline": "A",
+    "target": 0.25,
+    "estimate": 0.190118,
+    "low": 0.184144,
+    "high": 0.19673,
+    "verdict": "partial",
+    "cellsWon": 9
+   },
+   "H1b": {
+    "metric": "sellThrough",
+    "baseline": "B",
+    "target": 0.25,
+    "estimate": 0.006066,
+    "low": 0.004614,
+    "high": 0.007627,
+    "verdict": "partial",
+    "cellsWon": 5
+   },
+   "H2a": {
+    "metric": "revenue",
+    "baseline": "A",
+    "target": 0.18,
+    "estimate": 0.110714,
+    "low": 0.105636,
+    "high": 0.116047,
+    "verdict": "partial",
+    "cellsWon": 9
+   },
+   "H2b": {
+    "metric": "revenue",
+    "baseline": "B",
+    "target": 0.18,
+    "estimate": 0.003666,
+    "low": 0.002257,
+    "high": 0.005056,
+    "verdict": "partial",
+    "cellsWon": 6
+   }
+  },
+  "extra": {
+   "surplus_vs_A": {
+    "estimate": 0.006712,
+    "low": -0.001088,
+    "high": 0.014707,
+    "cellsWon": 6
+   },
+   "surplus_vs_B": {
+    "estimate": -0.023867,
+    "low": -0.026243,
+    "high": -0.021482,
+    "cellsWon": 3
+   },
+   "kg_vs_A": {
+    "estimate": 0.185328,
+    "low": 0.178422,
+    "high": 0.192605,
+    "cellsWon": 9
+   },
+   "kg_vs_B": {
+    "estimate": 0.003984,
+    "low": 0.002502,
+    "high": 0.005442,
+    "cellsWon": 5
+   },
+   "sellThrough_vs_A2": {
+    "estimate": -0.133358,
+    "low": -0.136782,
+    "high": -0.129934,
+    "cellsWon": 0
+   },
+   "revenue_vs_A2": {
+    "estimate": 0.232236,
+    "low": 0.226394,
+    "high": 0.238417,
+    "cellsWon": 6
+   },
+   "surplus_vs_A2": {
+    "estimate": -0.502385,
+    "low": -0.506445,
+    "high": -0.498109,
+    "cellsWon": 0
+   },
+   "revenue_A2_vs_A": {
+    "estimate": -0.09862,
+    "low": -0.103917,
+    "high": -0.093306,
+    "cellsWon": 3
+   }
+  },
+  "plausibility": {
+   "note": "Sell-through of Method C in the medium-demand cells (cells 4–6), to compare in order of magnitude with the demo network assumption of 65%.",
+   "mediumDemandCells": [
+    {
+     "id": 4,
+     "sellThrough": 0.573048
+    },
+    {
+     "id": 5,
+     "sellThrough": 0.710678
+    },
+    {
+     "id": 6,
+     "sellThrough": 0.815026
+    }
+   ],
+   "demoNetworkAssumption": 0.65
+  }
+ },
+ "sweep": {
+  "gammas": [
+   {
+    "gamma": 0.5,
+    "sellThrough": 0.742313,
+    "revenue": 15.771904,
+    "surplus": 6.040922,
+    "kg": 3.087461,
+    "revenueVsProduction": {
+     "estimate": -0.029626,
+     "low": -0.032828,
+     "high": -0.026448
+    }
+   },
+   {
+    "gamma": 0.75,
+    "sellThrough": 0.717963,
+    "revenue": 16.121915,
+    "surplus": 5.302719,
+    "kg": 2.987767,
+    "revenueVsProduction": {
+     "estimate": -0.008091,
+     "low": -0.010495,
+     "high": -0.005692
+    }
+   },
+   {
+    "gamma": 1,
+    "sellThrough": 0.697936,
+    "revenue": 16.2441,
+    "surplus": 4.783938,
+    "kg": 2.904967,
+    "revenueVsProduction": {
+     "estimate": -0.000574,
+     "low": -0.002188,
+     "high": 0.001256
+    }
+   },
+   {
+    "gamma": 1.3,
+    "sellThrough": 0.677218,
+    "revenue": 16.253424,
+    "surplus": 4.303305,
+    "kg": 2.819753,
+    "revenueVsProduction": {
+     "estimate": 0,
+     "low": 0,
+     "high": 0
+    }
+   },
+   {
+    "gamma": 1.6,
+    "sellThrough": 0.662222,
+    "revenue": 16.245543,
+    "surplus": 3.959244,
+    "kg": 2.756639,
+    "revenueVsProduction": {
+     "estimate": -0.000485,
+     "low": -0.00193,
+     "high": 0.000951
+    }
+   },
+   {
+    "gamma": 2,
+    "sellThrough": 0.645584,
+    "revenue": 16.181058,
+    "surplus": 3.595174,
+    "kg": 2.685433,
+    "revenueVsProduction": {
+     "estimate": -0.004452,
+     "low": -0.006767,
+     "high": -0.002354
+    }
+   },
+   {
+    "gamma": 2.5,
+    "sellThrough": 0.627746,
+    "revenue": 16.066574,
+    "surplus": 3.262113,
+    "kg": 2.612478,
+    "revenueVsProduction": {
+     "estimate": -0.011496,
+     "low": -0.014151,
+     "high": -0.008783
+    }
+   },
+   {
+    "gamma": 3,
+    "sellThrough": 0.614825,
+    "revenue": 15.974406,
+    "surplus": 3.018297,
+    "kg": 2.558542,
+    "revenueVsProduction": {
+     "estimate": -0.017167,
+     "low": -0.020283,
+     "high": -0.014149
+    }
+   }
+  ],
+  "bestRevenueGamma": 1.3,
+  "bestSellThroughGamma": 0.5
+ },
+ "ablation": [
+  {
+   "id": "linear",
+   "label": "γ = 1, no boost (Baseline B)",
+   "sellThrough": 0.673136,
+   "revenue": 16.194056,
+   "surplus": 4.408522,
+   "kg": 2.808564,
+   "revenueVsB": {
+    "estimate": 0,
+    "low": 0,
+    "high": 0
+   },
+   "sellThroughVsB": {
+    "estimate": 0,
+    "low": 0,
+    "high": 0
+   }
+  },
+  {
+   "id": "linear+boost",
+   "label": "γ = 1, boost 5",
+   "sellThrough": 0.697936,
+   "revenue": 16.2441,
+   "surplus": 4.783938,
+   "kg": 2.904967,
+   "revenueVsB": {
+    "estimate": 0.00309,
+    "low": 0.001654,
+    "high": 0.004464
+   },
+   "sellThroughVsB": {
+    "estimate": 0.036844,
+    "low": 0.035082,
+    "high": 0.038485
+   }
+  },
+  {
+   "id": "curve",
+   "label": "γ = 1.3, no boost",
+   "sellThrough": 0.652322,
+   "revenue": 16.15355,
+   "surplus": 3.942118,
+   "kg": 2.721347,
+   "revenueVsB": {
+    "estimate": -0.002501,
+    "low": -0.004269,
+    "high": -0.000753
+   },
+   "sellThroughVsB": {
+    "estimate": -0.03092,
+    "low": -0.032464,
+    "high": -0.029428
+   }
+  },
+  {
+   "id": "curve+boost",
+   "label": "γ = 1.3, boost 5 (Method C)",
+   "sellThrough": 0.677218,
+   "revenue": 16.253424,
+   "surplus": 4.303305,
+   "kg": 2.819753,
+   "revenueVsB": {
+    "estimate": 0.003666,
+    "low": 0.002257,
+    "high": 0.005056
+   },
+   "sellThroughVsB": {
+    "estimate": 0.006066,
+    "low": 0.004614,
+    "high": 0.007627
+   }
+  }
+ ],
+ "sensitivity": [
+  {
+   "id": "patient0",
+   "label": "Nobody waits (patient share 0%)",
+   "sellThroughVsA": {
+    "estimate": 0.020305,
+    "low": 0.015209,
+    "high": 0.02502
+   },
+   "revenueVsA": {
+    "estimate": -0.052354,
+    "low": -0.057087,
+    "high": -0.047531
+   },
+   "sellThroughVsB": {
+    "estimate": -0.012431,
+    "low": -0.014248,
+    "high": -0.01073
+   },
+   "revenueVsB": {
+    "estimate": -0.016323,
+    "low": -0.01838,
+    "high": -0.014358
+   },
+   "pooledSellThrough": {
+    "A": 0.567577,
+    "B": 0.586391,
+    "C": 0.579102
+   },
+   "pooledRevenue": {
+    "A": 14.699328,
+    "B": 14.160911,
+    "C": 13.929761
+   }
+  },
+  {
+   "id": "patient60",
+   "label": "Many wait (patient share 60%)",
+   "sellThroughVsA": {
+    "estimate": 0.310604,
+    "low": 0.303573,
+    "high": 0.317857
+   },
+   "revenueVsA": {
+    "estimate": 0.239804,
+    "low": 0.233939,
+    "high": 0.245663
+   },
+   "sellThroughVsB": {
+    "estimate": 0.014346,
+    "low": 0.013079,
+    "high": 0.015682
+   },
+   "revenueVsB": {
+    "estimate": 0.016588,
+    "low": 0.015588,
+    "high": 0.017544
+   },
+   "pooledSellThrough": {
+    "A": 0.56729,
+    "B": 0.732977,
+    "C": 0.743492
+   },
+   "pooledRevenue": {
+    "A": 14.770089,
+    "B": 18.013217,
+    "C": 18.312014
+   }
+  },
+  {
+   "id": "late",
+   "label": "Arrivals concentrated late",
+   "sellThroughVsA": {
+    "estimate": 0.281246,
+    "low": 0.274928,
+    "high": 0.287315
+   },
+   "revenueVsA": {
+    "estimate": 0.090968,
+    "low": 0.085897,
+    "high": 0.096117
+   },
+   "sellThroughVsB": {
+    "estimate": 0.010442,
+    "low": 0.009195,
+    "high": 0.011728
+   },
+   "revenueVsB": {
+    "estimate": 0.005935,
+    "low": 0.004693,
+    "high": 0.007082
+   },
+   "pooledSellThrough": {
+    "A": 0.568636,
+    "B": 0.721034,
+    "C": 0.728563
+   },
+   "pooledRevenue": {
+    "A": 14.597528,
+    "B": 15.831483,
+    "C": 15.92544
+   }
+  },
+  {
+   "id": "early",
+   "label": "Arrivals concentrated early",
+   "sellThroughVsA": {
+    "estimate": 0.066562,
+    "low": 0.060684,
+    "high": 0.072378
+   },
+   "revenueVsA": {
+    "estimate": 0.107042,
+    "low": 0.101711,
+    "high": 0.112513
+   },
+   "sellThroughVsB": {
+    "estimate": -0.002787,
+    "low": -0.004688,
+    "high": -0.000861
+   },
+   "revenueVsB": {
+    "estimate": 0.001186,
+    "low": -0.000455,
+    "high": 0.002908
+   },
+   "pooledSellThrough": {
+    "A": 0.570829,
+    "B": 0.610525,
+    "C": 0.608824
+   },
+   "pooledRevenue": {
+    "A": 14.782328,
+    "B": 16.345272,
+    "C": 16.364653
+   }
+  },
+  {
+   "id": "sd10",
+   "label": "Narrow willingness to pay (sd 0.10)",
+   "sellThroughVsA": {
+    "estimate": 0.488016,
+    "low": 0.477942,
+    "high": 0.49842
+   },
+   "revenueVsA": {
+    "estimate": 0.288688,
+    "low": 0.279632,
+    "high": 0.297348
+   },
+   "sellThroughVsB": {
+    "estimate": 0.014522,
+    "low": 0.012755,
+    "high": 0.016361
+   },
+   "revenueVsB": {
+    "estimate": 0.001901,
+    "low": 0.000317,
+    "high": 0.003415
+   },
+   "pooledSellThrough": {
+    "A": 0.452093,
+    "B": 0.663092,
+    "C": 0.672721
+   },
+   "pooledRevenue": {
+    "A": 11.766339,
+    "B": 15.134367,
+    "C": 15.163137
+   }
+  },
+  {
+   "id": "sd30",
+   "label": "Wide willingness to pay (sd 0.30)",
+   "sellThroughVsA": {
+    "estimate": 0.115521,
+    "low": 0.111071,
+    "high": 0.120151
+   },
+   "revenueVsA": {
+    "estimate": 0.085157,
+    "low": 0.081212,
+    "high": 0.08924
+   },
+   "sellThroughVsB": {
+    "estimate": 0.002666,
+    "low": 0.001363,
+    "high": 0.003914
+   },
+   "revenueVsB": {
+    "estimate": 0.009407,
+    "low": 0.008246,
+    "high": 0.010509
+   },
+   "pooledSellThrough": {
+    "A": 0.620646,
+    "B": 0.690503,
+    "C": 0.692344
+   },
+   "pooledRevenue": {
+    "A": 16.199339,
+    "B": 17.415006,
+    "C": 17.578833
+   }
+  }
+ ],
+ "bakery": {
+  "itemsPerDay": 15,
+  "priceMdl": 60,
+  "mdlPerEur": 20.1,
+  "priceEur": 2.985075,
+  "fullValueEurPerDay": 44.776119,
+  "kgPerItem": 0.5,
+  "daysPerMonth": 30,
+  "methods": {
+   "A": {
+    "itemsSoldPerDay": 8.995275,
+    "sellThrough": 0.599685,
+    "revenueEurPerDay": 13.492917,
+    "revenueEurPerDayLow": 13.446658,
+    "revenueEurPerDayHigh": 13.542431,
+    "valueShare": 0.301342,
+    "surplusEurPerDay": 3.939838,
+    "kgPerDay": 4.497639,
+    "perCell": [
+     {
+      "itemsSold": 2.692,
+      "revenueEur": 4.038
+     },
+     {
+      "itemsSold": 4.516,
+      "revenueEur": 6.774
+     },
+     {
+      "itemsSold": 6.7625,
+      "revenueEur": 10.14375
+     },
+     {
+      "itemsSold": 5.33,
+      "revenueEur": 7.995
+     },
+     {
+      "itemsSold": 9.0215,
+      "revenueEur": 13.53225
+     },
+     {
+      "itemsSold": 12.6315,
+      "revenueEur": 18.94725
+     },
+     {
+      "itemsSold": 10.519,
+      "revenueEur": 15.7785
+     },
+     {
+      "itemsSold": 14.4935,
+      "revenueEur": 21.74025
+     },
+     {
+      "itemsSold": 14.9915,
+      "revenueEur": 22.48725
+     }
+    ]
+   },
+   "B": {
+    "itemsSoldPerDay": 10.67616,
+    "sellThrough": 0.711744,
+    "revenueEurPerDay": 14.874127,
+    "revenueEurPerDayLow": 14.83163,
+    "revenueEurPerDayHigh": 14.919834,
+    "valueShare": 0.332189,
+    "surplusEurPerDay": 4.110314,
+    "kgPerDay": 5.338083,
+    "perCell": [
+     {
+      "itemsSold": 4.377,
+      "revenueEur": 5.48243
+     },
+     {
+      "itemsSold": 5.9725,
+      "revenueEur": 7.821585
+     },
+     {
+      "itemsSold": 7.6715,
+      "revenueEur": 10.489285
+     },
+     {
+      "itemsSold": 8.593,
+      "revenueEur": 10.779165
+     },
+     {
+      "itemsSold": 11.597,
+      "revenueEur": 15.271675
+     },
+     {
+      "itemsSold": 13.6085,
+      "revenueEur": 19.178015
+     },
+     {
+      "itemsSold": 14.3055,
+      "revenueEur": 18.7168
+     },
+     {
+      "itemsSold": 14.961,
+      "revenueEur": 21.943165
+     },
+     {
+      "itemsSold": 14.9995,
+      "revenueEur": 24.185025
+     }
+    ]
+   },
+   "C": {
+    "itemsSoldPerDay": 10.67844,
+    "sellThrough": 0.711896,
+    "revenueEurPerDay": 14.945772,
+    "revenueEurPerDayLow": 14.901977,
+    "revenueEurPerDayHigh": 14.991694,
+    "valueShare": 0.333789,
+    "surplusEurPerDay": 4.001002,
+    "kgPerDay": 5.339222,
+    "perCell": [
+     {
+      "itemsSold": 4.616,
+      "revenueEur": 5.57988
+     },
+     {
+      "itemsSold": 6.011,
+      "revenueEur": 7.7334
+     },
+     {
+      "itemsSold": 7.6015,
+      "revenueEur": 10.379945
+     },
+     {
+      "itemsSold": 8.7195,
+      "revenueEur": 10.738585
+     },
+     {
+      "itemsSold": 11.4945,
+      "revenueEur": 15.139175
+     },
+     {
+      "itemsSold": 13.4655,
+      "revenueEur": 19.232025
+     },
+     {
+      "itemsSold": 14.2515,
+      "revenueEur": 18.69484
+     },
+     {
+      "itemsSold": 14.947,
+      "revenueEur": 22.2369
+     },
+     {
+      "itemsSold": 14.9995,
+      "revenueEur": 24.777195
+     }
+    ]
+   },
+   "A2": {
+    "itemsSoldPerDay": 12.28266,
+    "sellThrough": 0.818844,
+    "revenueEurPerDay": 12.15984,
+    "revenueEurPerDayLow": 12.13245,
+    "revenueEurPerDayHigh": 12.187345,
+    "valueShare": 0.27157,
+    "surplusEurPerDay": 7.874509,
+    "kgPerDay": 6.141333,
+    "perCell": [
+     {
+      "itemsSold": 6.523,
+      "revenueEur": 6.45777
+     },
+     {
+      "itemsSold": 8.2325,
+      "revenueEur": 8.150175
+     },
+     {
+      "itemsSold": 9.7075,
+      "revenueEur": 9.610425
+     },
+     {
+      "itemsSold": 12.266,
+      "revenueEur": 12.14334
+     },
+     {
+      "itemsSold": 14.1125,
+      "revenueEur": 13.971375
+     },
+     {
+      "itemsSold": 14.713,
+      "revenueEur": 14.56587
+     },
+     {
+      "itemsSold": 14.9895,
+      "revenueEur": 14.839605
+     },
+     {
+      "itemsSold": 15,
+      "revenueEur": 14.85
+     },
+     {
+      "itemsSold": 15,
+      "revenueEur": 14.85
+     }
+    ]
+   }
+  }
+ }
+}

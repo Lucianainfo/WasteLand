@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>WasteLand — MoldSEF abstract</title>
+<style>
+  @page { size: A4; margin: 2cm; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: "Times New Roman", Times, serif; font-size: 12pt; line-height: 1.15; color: #000; text-align: justify; }
+  h1, h2, p, table, ol { font-size: 12pt; margin: 0; }
+  h1 { text-align: center; font-weight: bold; margin-bottom: 2pt; }
+  h2 { font-weight: bold; margin-top: 6pt; }
+  .byline { text-align: center; margin-bottom: 3pt; }
+  p { margin-bottom: 3pt; }
+  table { border-collapse: collapse; width: 100%; margin: 3pt 0; text-align: center; }
+  th, td { border: 0.5pt solid #000; padding: 0 3pt; font-weight: normal; }
+  th { font-weight: bold; }
+  td.l, th.l { text-align: left; }
+  caption { caption-side: top; text-align: left; font-weight: bold; padding-bottom: 1pt; }
+  ol { padding-left: 1.6em; text-align: left; }
+  li { margin-bottom: 0; }
+</style>
+</head>
+<body>
+
+<h1>WasteLand: does a price that falls toward closing time rescue more surplus food and more revenue? A pre-registered simulation benchmark and venue cost model</h1>
+<p class="byline">Luciana Posturusu (Grade 12) · Supervisor: Azamat Jayush · Software Development / Food waste</p>
+
+<h2>1. Aim and hypotheses</h2>
+<p>About 1.05 billion tonnes of food were wasted in 2022, and 19% of the food available to consumers ends up in the bin [1]. WasteLand lists a venue's unsold food in the last three hours before closing and lowers its price as closing approaches: the discount rises from 30% to 70% along p<sup>1.3</sup> (p is the share of the window elapsed), plus up to 5 points when much of the batch is still unsold. The exponent 1.3 and the boost were design choices, not results. We tested whether this rule beats the two simple rules a venue would otherwise use. The hypotheses, decision rule and demand scenarios were written on 2026-11-12, before the simulator was run (repository file <i>research/PREREGISTRATION.md</i>, SHA-256 c209c8e4051d… recorded in the results). The targets were proposed by the supervisor and not changed afterwards. <b>H1a/H1b:</b> compared with a fixed 50% discount (A) or a linear 30%→70% markdown (B), the rule (C) raises the share of portions sold by at least 25%. <b>H2a/H2b:</b> it raises revenue recovered per evening by at least 18%. A hypothesis is supported only if the estimate reaches the target and the 95% interval excludes zero; if the interval is above zero but the estimate is below the target, it is partially supported.</p>
+
+<h2>2. Methodology</h2>
+<p><b>Simulator.</b> One trial is one venue-evening with 2–8 unsold portions of a catalogue item. Interested customers arrive as a Poisson process (D = 0.75, 1.5, 3 per portion over the 180-minute window) at random minutes; each is willing to pay a share w of the full price, w ~ Normal(m, 0.20) truncated to [0.05, 1] with m = 0.35, 0.45, 0.55, and buys one portion if the displayed price is at or below that. A share of 30% are patient: they keep checking every minute and buy once the price has fallen enough, so a falling price is not rewarded by assuming nobody notices it [4]. The price is recomputed from the current stock before every decision, using the deployed functions <i>discountFor</i> and <i>discountedPrice</i> imported from the server code. <b>Design.</b> Nine demand scenarios (D × m), 2,000 trials each, 18,000 in total (the requirement is N ≥ 100); every rule sells to the same customers (paired design). Rule A2, a fixed 67% discount (one third of the value, the typical surprise-bag price [2]), was added for context and is not part of any hypothesis. <b>Statistics.</b> Pooled relative improvement with a paired 2,000-resample bootstrap [5]; seed wl|v1, used once (debugging used another seed). <b>Limits.</b> <b>There is no real sales data</b>: the arrival rate, willingness to pay and patience are assumptions, bracketed by the grid and six one-at-a-time variations, not measured.</p>
+
+<h2>3. Quantitative benchmark results</h2>
+<table>
+<caption>Table 1. Averages over the nine scenarios (N = 18,000 venue-evenings)</caption>
+<tr><th class="l">Pricing rule</th><th>Portions rescued</th><th>Revenue / evening</th><th>Customer surplus</th><th>Food rescued</th></tr>
+<tr><td class="l">A · Fixed 50% off</td><td>56.9%</td><td>€14.63</td><td>€4.27</td><td>2.38 kg</td></tr>
+<tr><td class="l">B · Linear 30→70%</td><td>67.3%</td><td>€16.19</td><td>€4.41</td><td>2.81 kg</td></tr>
+<tr><td class="l">C · WasteLand (p^1.3 + boost)</td><td>67.7%</td><td>€16.25</td><td>€4.30</td><td>2.82 kg</td></tr>
+<tr><td class="l">A2 · Fixed 67% off</td><td>78.1%</td><td>€13.19</td><td>€8.65</td><td>3.25 kg</td></tr>
+</table>
+<p><b>All four hypotheses are partially supported.</b> Against the fixed 50% discount the rule rescues 19.0% more portions (95% interval 18.4% to 19.7%, target 25%) and recovers 11.1% more revenue (10.6% to 11.6%, target 18%), in 9 of 9 scenarios. Against the linear markdown the difference is real but tiny: +0.6% portions (0.5% to 0.8%) and +0.4% revenue (0.2% to 0.5%), better in only 5 and 6 of 9 scenarios, because the two share their endpoints. <b>Why 1.3?</b> Sweeping the exponent from 0.5 to 3.0 shows a plateau, not a sharp optimum: revenue peaks at γ = 1.3, but every exponent from 1.0 to 1.6 is within 0.1% of it, and 1.3 is not statistically separable from 1.0 or 1.6. The ablation shows which ingredient works: the curve alone (γ = 1.3, no boost) is worse than the straight line (−3.1% portions, −0.3% revenue); the boost for unsold stock adds the rescued portions (+3.7% on the straight line). Against the fixed 67% discount the rule rescues 13.3% fewer portions but recovers 23.2% more revenue, and customers keep 50% less surplus: last-call pricing maximises money, a deep discount maximises food rescued. <b>Sensitivity:</b> the advantage over the fixed 50% discount depends on customers noticing the falling price. If nobody waits, it rescues +2.0% portions but earns −5.2% revenue, less than the fixed discount; if 60% wait, +31.1% and +24.0%. Medium-demand scenarios rescue 57%–82% of portions (the demo network assumes 65%).</p>
+
+<h2>4. Economic and social applicability</h2>
+<p><b>Venue ROI.</b> Reference bakery: 15 unsold items a day at 60 MDL (27,000 MDL of retail value a month), €1 = 20.1 MDL (BNM, early November 2026 [6]), 30 days a month. The food is already baked, so recovered revenue is pure gain. Thrown away it brings 0. With the benchmark's yields the rule recovers 9,012 MDL a month (€448), 108,148 MDL (€5,380) a year, 33% of retail value, and rescues 10.7 items a day (160 kg a month); the fixed 50% discount recovers 8,136 MDL a month and the linear markdown 8,969 MDL. A surprise-bag app selling at 67% off keeps 5,499 MDL a month after a 25% commission and 5,133 MDL after 30%; a commission above about 19% would make an uncharged fixed 67% discount worth more than WasteLand. The 25–30% rates come from the supervisor and could not be confirmed on Too Good To Go's own pages [2]. If binning costs €0.10 per kg (a placeholder, not a source), a further €16 a month is saved. <b>Cost of running WasteLand.</b> The prototype costs 0 on Vercel's Hobby plan and Upstash's free tier, but Hobby is limited to personal, non-commercial use, so a pilot that charges venues needs Vercel Pro (about USD 20 a month) [7]. Counting the Redis commands in the code, the globe endpoint alone spends 56 commands per 60-second cache refresh, so steady traffic passes Upstash's 500,000 free commands a month: 342,500 commands (€18.52 a month) for 5,000 visits at steady evening traffic [8]. <b>Social value:</b> 2.82 kg of food per venue-evening rescued instead of binned. <b>Unverified:</b> commission rates, Vercel Pro price, the disposal placeholder and all demand parameters.</p>
+
+<h2>5. Conclusions</h2>
+<p>In this simulation, last-call pricing rescues about a fifth more portions and about a tenth more revenue than a fixed 50% discount, short of the pre-registered 25% and 18% targets; it is practically indistinguishable from a plain linear markdown, and 1.3 is one point on a flat plateau rather than a proven optimum. The unsold-stock boost, not the curve, is what adds rescued portions; a deep fixed discount rescues more food but returns less money. The result holds only if some customers notice and wait for the price to fall. The missing experiment is a pilot with one real bakery: measure arrivals and willingness to pay, then re-run this benchmark with those numbers as an amendment.</p>
+
+<h2>References</h2>
+<ol>
+<li>UNEP. Food Waste Index Report 2024. United Nations Environment Programme; 2024. unep.org.</li>
+<li>Too Good To Go. Business pages (Surprise Bags sold at 25–50% of retail value; annual fee plus a commission that varies by country). toogoodtogo.com.</li>
+<li>Gallego G., van Ryzin G. Optimal dynamic pricing of inventories with stochastic demand over finite horizons. Management Science 1994;40(8):999–1020.</li>
+<li>Su X. Intertemporal pricing with strategic customer behavior. Management Science 2007;53(5):726–741.</li>
+<li>Efron B., Tibshirani R.J. An Introduction to the Bootstrap. Chapman &amp; Hall; 1993.</li>
+<li>National Bank of Moldova. Official exchange rate pages, 5–6 November 2026 (20.1773 and 20.1089 MDL per EUR). bnm.md.</li>
+<li>Vercel. Pricing (Hobby: personal, non-commercial use; Pro about USD 20 a month, from secondary sources). vercel.com/pricing.</li>
+<li>Upstash. Redis pricing (500,000 free commands a month, then USD 0.20 per 100,000). upstash.com/pricing/redis.</li>
+</ol>
+<p><b>Availability.</b> Code, pre-registration, results and logbook: <i>research/</i>, <i>docs/moldsef/</i> in the repository.</p>
+
+</body>
+</html>

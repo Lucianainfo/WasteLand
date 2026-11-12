@@ -103,7 +103,7 @@ export function AboutPage() {
             </div>
             <div className="border-t border-[var(--champagne)]/20 pt-4">
               <dt className="eyebrow text-[0.6rem] text-[var(--gold)]">{a.aiModel}</dt>
-              <dd className="font-display mt-1 text-xl text-[var(--bg-card)]">Claude Opus 5.5</dd>
+              <dd className="font-display mt-1 text-xl text-[var(--bg-card)]">Claude Opus 5.5 · Sonnet 5.5</dd>
             </div>
           </dl>
           <a href={`${REPO_URL}/blob/main/docs/AI_USAGE.md`} target="_blank" rel="noopener noreferrer" className="btn-lux btn-light mt-12">

@@ -12,6 +12,7 @@ export const HERO_IMAGES = {
   solution: '1663530761401-15eefb544889',
   compare: '1747178519928-0639a0218bba',
   profile: '1530610476181-d83430b64dcd',
+  research: '1509440159596-0249088772ff',
 } as const
 
 export const STORY_IMAGES = {

@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { EveningBackground } from './components/EveningBackground'
 import { Footer } from './components/Footer'
@@ -12,6 +12,9 @@ import { PartnerPage } from './pages/PartnerPage'
 import { ProblemPage } from './pages/ProblemPage'
 import { ProfilePage } from './pages/ProfilePage'
 import { SolutionPage } from './pages/SolutionPage'
+
+// the research page ships the benchmark results, so it loads on demand
+const ResearchPage = lazy(() => import('./pages/ResearchPage').then((m) => ({ default: m.ResearchPage })))
 
 /** Every page opens on its hero, so a route change starts at the top. */
 function ScrollToTop() {
@@ -35,6 +38,14 @@ function AppShell() {
           <Route path="/solution" element={<SolutionPage />} />
           <Route path="/compare" element={<ComparePage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route
+            path="/research"
+            element={
+              <Suspense fallback={<div className="min-h-[60svh]" />}>
+                <ResearchPage />
+              </Suspense>
+            }
+          />
           <Route path="/partner" element={<PartnerPage />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>
