@@ -91,7 +91,7 @@ export function disposalSavedEur(kgPerMonth: number, eurPerKg: number): number {
 // 2. Cost of running WasteLand
 // ---------------------------------------------------------------------------------------------
 
-/** Vercel Hobby is for personal, non-commercial use; a paying venue needs Pro (~USD 20/month, secondary sources). */
+/** Vercel Hobby is for personal, non-commercial use; a paying venue needs Pro (USD 20/month excluding VAT, vercel.com/pricing, checked 2026-11-12). */
 export const VERCEL_PRO_USD_PER_MONTH = 20
 /** The catalogue's own USD rate (api/_lib/catalog.ts): 1 EUR = 1.08 USD. */
 export const USD_PER_EUR = 1.08

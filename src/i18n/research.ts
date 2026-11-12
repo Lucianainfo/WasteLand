@@ -179,7 +179,7 @@ const en: ResearchTexts = {
   ],
 
   costTitle: 'What it costs to run WasteLand',
-  costIntro: 'The prototype costs nothing: Vercel’s Hobby plan and Upstash’s free tier. But the Hobby plan is for non-commercial use only, so a pilot that takes money from venues needs at least Vercel Pro (about USD 20 a month, from secondary sources; check vercel.com/pricing).',
+  costIntro: 'The prototype costs nothing: Vercel’s Hobby plan and Upstash’s free tier. But the Hobby plan is for non-commercial use only, so a pilot that takes money from venues needs at least Vercel Pro (USD 20 a month excluding VAT, per vercel.com/pricing).',
   colScenario: 'Traffic',
   colSessions: 'Visits / month',
   colCommands: 'Redis commands',
@@ -286,7 +286,7 @@ const ro: ResearchTexts = {
   ],
 
   costTitle: 'Cât costă să rulezi WasteLand',
-  costIntro: 'Prototipul nu costă nimic: planul Hobby Vercel și nivelul gratuit Upstash. Dar planul Hobby e doar pentru uz necomercial, deci un pilot care încasează bani de la localuri are nevoie măcar de Vercel Pro (circa 20 USD pe lună, din surse secundare; verifică vercel.com/pricing).',
+  costIntro: 'Prototipul nu costă nimic: planul Hobby Vercel și nivelul gratuit Upstash. Dar planul Hobby e doar pentru uz necomercial, deci un pilot care încasează bani de la localuri are nevoie măcar de Vercel Pro (20 USD pe lună, fără TVA, conform vercel.com/pricing).',
   colScenario: 'Trafic',
   colSessions: 'Vizite / lună',
   colCommands: 'Comenzi Redis',
@@ -393,7 +393,7 @@ const ru: ResearchTexts = {
   ],
 
   costTitle: 'Сколько стоит запуск WasteLand',
-  costIntro: 'Прототип ничего не стоит: план Hobby у Vercel и бесплатный уровень Upstash. Но Hobby — только для некоммерческого использования, поэтому пилоту, который берёт деньги с заведений, нужен хотя бы Vercel Pro (около 20 USD в месяц по вторичным источникам; проверьте vercel.com/pricing).',
+  costIntro: 'Прототип ничего не стоит: план Hobby у Vercel и бесплатный уровень Upstash. Но Hobby — только для некоммерческого использования, поэтому пилоту, который берёт деньги с заведений, нужен хотя бы Vercel Pro (20 USD в месяц без НДС по данным vercel.com/pricing).',
   colScenario: 'Трафик',
   colSessions: 'Визитов / месяц',
   colCommands: 'Команд Redis',

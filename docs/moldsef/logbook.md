@@ -69,8 +69,8 @@ Trigger: the supervisor's evaluation of Submission #1 (score 76%, 8/10) asked fo
 | Objective | A concrete financial table for a bakery, and the real cost of running the platform |
 | Method | `src/utils/economics.ts` (13 tests): venue recovery scaled from the benchmark's yields, commission, break-even commission, disposal placeholder, Redis command budget counted from `api/_lib/store.ts` and the handlers; `/research` page in EN/RO/RU (`src/pages/ResearchPage.tsx`) with sliders |
 | Result | Reference bakery (15 items a day at 60 MDL, €1 = 20.1 MDL): C recovers 9,012 MDL a month (about €448), 108,148 MDL (about €5,380) a year; the bin brings 0; a fixed 67% discount with a 25% / 30% commission keeps 5,499 / 5,133 MDL a month |
-| Findings about cost | The prototype costs 0 (Vercel Hobby, Upstash free), **but Vercel's Hobby plan is non-commercial**, so a pilot that charges venues needs Vercel Pro (about USD 20 a month, secondary sources). Counting the commands in the code, `/api/cities` costs 56 Redis commands per 60-second cache refresh, so steady traffic passes Upstash's free 500,000 commands a month (overage a few dollars) |
-| Unverified | The 25% / 30% commission rates (supervisor's figures; Too Good To Go's pages give no rate), the Vercel Pro price, the disposal rate (placeholder), every demand parameter |
+| Findings about cost | The prototype costs 0 (Vercel Hobby, Upstash free), **but Vercel's Hobby plan is non-commercial**, so a pilot that charges venues needs Vercel Pro (USD 20 a month excluding VAT, confirmed on vercel.com/pricing on 12 November 2026 (screenshot sent by the student)). Counting the commands in the code, `/api/cities` costs 56 Redis commands per 60-second cache refresh, so steady traffic passes Upstash's free 500,000 commands a month (overage a few dollars) |
+| Unverified | The 25% / 30% commission rates (supervisor's figures; Too Good To Go's pages give no rate), the disposal rate (placeholder), every demand parameter |
 | Failure cases | My own test expected 675 where 1,350 is correct (arithmetic slip in the test, code was right); the poster first overflowed onto a second page and the abstract onto a third and were trimmed; a mobile layout overflowed and was fixed |
 | Student check | ☐ opened `/research` in all three languages ☐ opened the cited sources and confirmed (or corrected) the unverified items |
 
@@ -93,7 +93,7 @@ Trigger: the supervisor's evaluation of Submission #1 (score 76%, 8/10) asked fo
 | P1 | Pilot with one real bakery for two weeks: log arrivals per hour, price shown and portions sold | Replaces the assumed demand (the biggest weakness) |
 | P2 | Re-run `research/benchmark.ts` with the pilot's parameters as a **dated amendment** to the pre-registration | Keeps the test honest: thresholds are never changed after a result |
 | P3 | Ask a venue for its real waste-disposal invoice and replace the placeholder 0.10 €/kg | Disposal saving is the weakest figure |
-| P4 | Confirm Too Good To Go's commission with a venue that uses it, and the current Vercel Pro price | Two unverified inputs of the ROI |
+| P4 | Confirm Too Good To Go's commission with a venue that uses it | With the disposal rate, the last unverified input of the ROI (the Vercel Pro price is confirmed) |
 
 ## D. Items the student must do
 

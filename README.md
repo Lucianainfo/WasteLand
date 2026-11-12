@@ -43,7 +43,7 @@ For reviewers: every claim below points to a file or a test that can be checked,
 
 * No real sales data: demand is assumed (nine scenarios, six variations); a one-bakery pilot is the missing experiment.
 * All four hypotheses are only partially supported; the 1.3 exponent is a plateau, not a proven optimum; the advantage over a fixed discount disappears if no customer waits for the price to fall.
-* Unverified inputs: the 25–30% commission rates (the supervisor's figures), the Vercel Pro price (secondary sources), the disposal-cost placeholder, and three literature references written from memory.
+* Unverified inputs: the 25–30% commission rates (the supervisor's figures), the disposal-cost placeholder, and three literature references written from memory. (The Vercel Pro price, USD 20 a month excluding VAT, was confirmed on vercel.com/pricing on 12 November 2026 (screenshot sent by the student).)
 * The pre-registration was written before the simulator but was not committed to Git before the run (its hash is stored in the results).
 * Team size: a solo entry whose two-role exception is still to be confirmed with the supervisor.
 
@@ -278,7 +278,7 @@ AI tools were used during development, in line with the category's rules on citi
 - **Prompts:** every prompt is quoted verbatim, with what it produced and how it was checked, in [docs/AI_USAGE.md](docs/AI_USAGE.md).
 - **How it was used:** scaffolding the project on the structure of the student's earlier project, writing frontend and backend TypeScript, generating the automated tests, translating the interface, and drafting this README, from directions and requirements given by the student.
 - **Human oversight:** generated code is reviewed, run and tested before being kept. Product decisions (the problem, the win-win-win model, the visual direction, what the architecture must protect against) were directed by the student.
-- **Verification of the research work:** every result is produced by code in `research/`, and tests check that the abstract, poster and pitch quote the numbers of the benchmark. Web sources (Too Good To Go, Vercel, Upstash, the National Bank of Moldova) were read through search results, not their full pages, and the pricing-literature references in the abstract were written from memory of the literature; the student must open and check each one. Items that could not be verified are listed in section 8.6–8.8.
+- **Verification of the research work:** every result is produced by code in `research/`, and tests check that the abstract, poster and pitch quote the numbers of the benchmark. Web sources (Too Good To Go, Vercel, Upstash, the National Bank of Moldova) were read through search results, not their full pages (only the Vercel Pro price was then confirmed on vercel.com/pricing on 12 November 2026 (screenshot sent by the student)), and the pricing-literature references in the abstract were written from memory of the literature; the student must open and check each one. Items that could not be verified are listed in section 8.6–8.8.
 - **What was not AI-generated:** the food-waste statistics and their sources, the Our World in Data chart, the TED talk and the Unsplash photographs are real external sources, credited below.
 
 No AI-generated text, image or code in this project is presented as original human work without this disclosure.
@@ -388,7 +388,7 @@ Reference venue (the supervisor's example): **15 unsold items a day at 60 MDL** 
 
 ### 8.7 What it costs to run WasteLand
 
-The prototype costs **0 EUR** on Vercel's Hobby plan and Upstash's free tier, as the supervisor wrote, **but Vercel's Hobby plan is limited to personal, non-commercial use** (vercel.com/pricing), so a pilot that charges venues needs at least Vercel Pro (about USD 20 a month, from secondary sources). Redis commands were counted from the code (`api/_lib/store.ts` and the handlers): 2 per city read, 5 per reservation, and **56 each time the 60-second cache of `/api/cities` (the globe) refreshes**. Steady traffic therefore passes Upstash's free 500,000 commands a month; the overage is a few dollars.
+The prototype costs **0 EUR** on Vercel's Hobby plan and Upstash's free tier, as the supervisor wrote, **but Vercel's Hobby plan is limited to personal, non-commercial use** (vercel.com/pricing), so a pilot that charges venues needs at least Vercel Pro (USD 20 a month excluding VAT, confirmed on vercel.com/pricing on 12 November 2026 (screenshot sent by the student); the wording that Hobby is non-commercial comes from Vercel's FAQ as found through search results, not seen first-hand; the pricing page itself calls Hobby "your web app or personal project"). Redis commands were counted from the code (`api/_lib/store.ts` and the handlers): 2 per city read, 5 per reservation, and **56 each time the 60-second cache of `/api/cities` (the globe) refreshes**. Steady traffic therefore passes Upstash's free 500,000 commands a month; the overage is a few dollars.
 
 | Traffic | Visits / month | Redis commands | Bill / month |
 |---|---|---|---|
