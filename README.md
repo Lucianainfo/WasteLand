@@ -390,6 +390,8 @@ Reference venue (the supervisor's example): **15 unsold items a day at 60 MDL** 
 
 The prototype costs **0 EUR** on Vercel's Hobby plan and Upstash's free tier, as the supervisor wrote, **but Vercel's Hobby plan is limited to personal, non-commercial use** (vercel.com/pricing), so a pilot that charges venues needs at least Vercel Pro (USD 20 a month excluding VAT, confirmed on vercel.com/pricing on 12 November 2026 (screenshot sent by the student); Vercel's fair-use guidelines, read on 12 November 2026, say that Hobby teams are restricted to non-commercial personal use and that all commercial usage requires Pro or Enterprise: vercel.com/docs/limits/fair-use-guidelines). Redis commands were counted from the code (`api/_lib/store.ts` and the handlers): 2 per city read, 5 per reservation, and **56 each time the 60-second cache of `/api/cities` (the globe) refreshes**. Steady traffic therefore passes Upstash's free 500,000 commands a month; the overage is a few dollars.
 
+**As submitted, WasteLand is a non-commercial student project:** it takes no payment on the site (reservations are paid at the counter, if at all) and shows no ads, so the free Hobby plan fits Vercel's rules. If someone paid for it or it earned money, it would need Pro. Where a case is unclear, Vercel's fair-use page sends the question to Vercel Support.
+
 | Traffic | Visits / month | Redis commands | Bill / month |
 |---|---|---|---|
 | Demo (jury) | 300 | 20,550 | €0.00 |
