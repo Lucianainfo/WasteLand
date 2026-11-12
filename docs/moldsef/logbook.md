@@ -2,7 +2,7 @@
 
 **Student:** Luciana Posturusu (Grade 12) · **Supervisor:** Azamat Jayush · **Project:** WasteLand, dynamic last-call pricing and venue cost model
 
-> **How this file was made.** Entries 1–5 were reconstructed on 2026-11-12 from the project's Git history and README timeline (every hash below is a real commit; dates are the commit dates, Europe/Bucharest). Entries 6–10 record work done on 2026-11-12 with the AI coding assistant Claude Code (model Claude Sonnet 5.5), at the direction of a classmate helping the student. The columns *Student check* are **left empty on purpose**: the student must fill them in after personally re-running and reading the item. The student should also check this layout against the official MoldSEF Template B, which was not available when this file was written.
+> **How this file was made.** Entries 1–5 were reconstructed on 2026-11-12 from the project's Git history and README timeline (every hash below is a real commit; dates are the commit dates, Europe/Bucharest). Entries 6–10 record work done on 2026-11-12 with the AI coding assistant Claude Code (model Claude Sonnet 5.5), at the direction of a classmate helping the student. The columns *Student check* are **left empty on purpose**: the student must fill them in after personally re-running and reading the item. A ☑ means the student told the classmate helping them (on 2026-11-12) that they did that check; it is recorded as their word and was not verified by the AI. The student should also check this layout against the official MoldSEF Template B, which was not available when this file was written.
 
 ## Team and roles
 
@@ -84,7 +84,7 @@ Trigger: the supervisor's evaluation of Submission #1 (score 76%, 8/10) asked fo
 | QR codes | Two QR codes on the poster (live site, GitHub repository), generated with the `qrcode` package (`docs/poster/qr-*.svg`) and checked by decoding them from the rendered poster. `/research` appears on the live site only after the new commit is deployed |
 | Not done | The layout was not checked against the official Template A/B (not available) |
 | Citations | The pricing-literature references (Gallego & van Ryzin 1994; Su 2007; Efron & Tibshirani 1993) were written from memory of the literature and **must be opened and checked by the student**; the web sources were read through search results, not the full pages |
-| Student check | ☐ read the abstract against the official template ☐ read the pitch aloud with a timer ☐ checked every reference ☐ scanned both QR codes with a phone |
+| Student check | ☐ read the abstract against the official template ☐ read the pitch aloud with a timer ☐ checked every reference ☑ scanned both QR codes with a phone |
 
 ## C. Planned experiments
 
