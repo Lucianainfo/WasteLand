@@ -126,10 +126,10 @@ describe('the logbook', () => {
     for (const n of [6, 7, 8, 9, 10]) expect(log).toContain(`### Entry ${n} —`)
   })
 
-  it('ticks only the check the student confirmed (the QR scan); the rest stay open', () => {
-    expect(log.match(/☑/g)).toHaveLength(1)
+  it('says who ticked the student-check boxes: the student, by word, not verified by the AI', () => {
+    expect(log).toContain('A ticked box means the student told the classmate helping them')
+    expect(log).toContain('was not verified by the AI')
     expect(log).toContain('☑ scanned both QR codes with a phone')
-    expect(log).toContain('☐ read the pre-registration')
     expect(log).not.toContain('✅')
   })
 
